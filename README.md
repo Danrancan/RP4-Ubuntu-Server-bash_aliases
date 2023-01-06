@@ -18,7 +18,7 @@ and the commands in it very very useful.
 ## Installation
 
 To install this file and get all of your linuxbabe.com web-server/email-server aliases, just clone it
-to your home folder (or any user directory), and symlink `.RP4-Ubuntu-Server-bash_aliases` 
+to your home folder (or any user directory), and symlink `.bash_aliases-rpi4` 
 to `/home/$USER/.bash_aliases`. After symlinking it, you need to source (`source $HOME/.bash_aliases`) the 
 symlink for bash to recognize the new commands. Don't forget to back 
 up your current original `.bash_aliases` file before replacing it with a symlink. You can fully accomplish 
