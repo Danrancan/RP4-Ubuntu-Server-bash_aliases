@@ -1,0 +1,842 @@
+# Bash aliases file for Raspberry Pi 4 Ubuntu based LEMP web/email server. Based off of tutorials on linuxbabe.com.
+# Don't forget to visit https://danran.rocks for my tutorials.
+# If you are reading this, then you have obviously installed it using my instructions in the README.me file.
+# However, if you want to uninstall this, you can read the readme file again, or run the following command below:
+# rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
+
+######## SPF RECORDS ######
+###########################
+
+# Check if SPF record for mcmo.is is propagated to the internet
+alias spftestmo='dig mcmo.is txt'
+alias spftestcake='dig oddcake.net txt'
+alias spftestdanran='dig danran.rocks txt'
+alias spftestfacl='dig facl.xyz txt'
+
+##################################
+# SPAM ASSASSIN / SPAMASS-MILTER #
+##################################
+
+# Check status of spamassassin
+alias sastat='sudo systemctl status spamassassin spamass-milter'
+# Enable Spamassassin
+alias saenable='sudo systemctl enable spamassassin spamass-milter'
+# Disable spamassassin
+alias sadisable='sudo systemctl disable spamassasin spamass-milter'
+# Start spamassassin
+alias sastart='sudo systemctl start spamassassin spamass-milter'
+# Stop spamassassin
+alias sastop='sudo systemctl stop spamassassin spamass-milter'
+# Reload spamassassin
+alias sarl='sudo systemctl restart spamassassin spamass-milter'
+# Check syntax of spamassassin local.cf file.
+alias satest='sudo spamassassin --lint'
+# Change spamassassin reject score
+# Note, you need to find the following line 'OPTIONS="${OPTIONS} -r 8"' and change the 8 to the desired reject score.
+alias sascore='sudo nano /etc/default/spamass-milter'
+# Adjust spamassassin whitelist and blacklist
+alias sawl='sudo nano /etc/spamassassin/local.cf'
+# After adding custom rules, close the file and run the following command to check syntax. Silent output means theres no syntax error.
+alias sacheck='sudo spamassassin --lint'
+
+###########################
+######### OPENDKIM ########
+###########################
+
+# Quick acess to opendkim journal logs
+alias dklog='sudo journalctl -eu opendkim'
+# Restart OpenDKIM
+alias dkrl='sudo systemctl restart opendkim  && echo "OpenDKIM restarted! Success!" || echo "Syntax error, OpenDKIM did not restart"'
+# Check status of OpenDKIM
+alias dkstat='sudo systemctl status opendkim  && echo "Just above is the status of OpenDKIM!" || echo "Syntax error, cannot get status of OpenDKIM"'
+# Test DKIM key for www.mcmo.is
+alias dktestmo='sudo opendkim-testkey -d mcmo.is -s default -vvv && echo "Here are the results of your DKIM Key test for mcmo.is" || echo "We could not test your DKIM key for mcmo.is"'
+# Test DKIM key for oddcake.net
+alias dktestcake='sudo opendkim-testkey -d oddcake.net -s default -vvv && echo "Here are the results of your DKIM Key test for oddcake.net" || echo "We could not test your DKIM key for oddcake.net"'
+# Test DKIM key for danran.rocks
+alias dktestdanran='sudo opendkim-testkey -d danran.rocks -s default -vvv && echo "Here are the results of your DKIM Key test for danran.rocks" || echo "We could not test your DKIM key for danran.rocks"'
+# Test DKIM Key for facl.xyz
+alias dktestfacl='sudo opendkim-testkey -d facl.xyz -s default -vvv && echo "Here are the results of your DMIM Key test for facl.xyz" || echo "We could not test your DKIM key for facl.xyz"'
+
+###########################
+######### NETDATA #########
+###########################
+
+alias ndstat='sudo service netdata status'
+alias ndrl='sudo service netdata restart'
+
+###########################
+########### DNS ###########
+###########################
+
+# Quickly determine DNS RESOLVER you are using.
+alias dns='systemd-resolve --status | grep "DNS Servers" -A2'
+alias dns2="systemd-resolve --status | grep 'DNS Servers' -A2"
+alias dns3='sudo resolvectl dns $iface'
+# View your current DNS Cache Size & Other info
+alias dnscache='sudo systemd-resolve --statistics'
+# Flush DNS Cache
+alias dnsflush='sudo systemd-resolve --flush-caches && echo "DNS Cache has been flushed" || echo "Oops! We Could NOT flush the DNS Cache"'
+# Flush DNS Cache Using DNS-CLEAN
+alias dnsclean='sudo /etc/init.d/dns-clean start && echo "DNS Cache has been cleaned" || echo "Oops! DNS Cache COULD NOT BE CLEANED!"'
+
+###########################
+########## DISKS ##########
+###########################
+
+# Check Free space
+alias space='df -H /dev/sda2 && echo "Free space statistics are above" || echo "Cannot get free space statistics. Check your syntax."'
+
+###########################
+##### SERVICE RESTART #####
+###########################
+
+# Restart sshd service
+alias sshrl='sudo systemctl restart sshd.service && echo "sudo systemctl restart sshd.service command worked, SSHD reloaded Correctly" || echo "Syntax Error, sshd did not reload correctly"'
+# Reload mysql
+alias sqlrl='sudo service mysql reload  && echo "mysql reloaded Correctly" || echo "Syntax Error, mysql did not reload correctly"'
+# Reload Nginx
+alias nrl='sudo service nginx reload && echo "Nginx reloaded correctly" || echo "Syntax Error, Nginx not reloaded correctly"'
+# Restart php7.3-fpm
+alias fpm7rl='sudo systemctl restart php7.3-fpm.service && echo "sudo systemctl restart php7.3-fpm.service command worked, FPM reloaded Correctly" || echo "Syntax Error, fpm7.4 did not reload correctly"'
+# restart php7.4-fpm
+alias fpmrl='sudo systemctl restart php7.4-fpm.service && echo "sudo systemctl restart php7.4-fpm.service command worked, FPM reloaded Correctly" || echo "Syntax Error, FPM7.4 did not reload correctly"'
+# Restart Dovecot
+alias dcrl='sudo systemctl restart dovecot && echo "Dovecot restarted correctly! YAY!" || echo "Dovecot didnt restart correctly, FUCK!!!"'
+# Reload mariadb-server
+alias mrl='sudo systemctl restart mariadb && echo "Mariadb-server restarted correctly! YAY!" || echo "Mariadb-server didnt restart correctly FUCK!!!"'
+# Reload mariadb-client
+#alias mcrl='sudo systemctl restart mariadb && echo "Mariadb-client restarted correctly! YAY!" || echo "Mariadb-client didnt restart correctly FUCK!!!"'
+# Restart the clamd (Clamav-Daemon service) service
+
+###########################
+###### SERVICE STOP #######
+###########################
+
+# Stop sshd service
+alias sshstop='sudo systemctl stop sshd.service && echo "sudo systemctl stop sshd.service command worked, SSHD stopped Correctly" || echo "Syntax Error, sshd did not stop correctly"'
+# Stop Mysql
+alias sqlstop='sudo service mysql stop  && echo "mysql stopped correctly" || echo "syntax Error, mysql did not stop correctly"'
+# Stop Nginx
+alias nstop='sudo service nginx stop && echo "nginx stopped correctly" || echo "syntax Error, Nginx not stop correctly"'
+# Stop php7.4-fpm
+alias fpmstop='sudo systemctl stop php7.4-fpm.service && echo "sudo systemctl stop php7.4-fpm.service command worked, FPM stopped Correctly" || echo "Syntax Error, FPM7.4 did not stop correctly"'
+# Reload php7.0-fpm
+alias fpm7stop='sudo systemctl stop php7.3-fpm.service && echo "sudo systemctl stop php7.3-fpm.service command worked, FPM stopped Correctly" || echo "Syntax Error, FPM7.3 did not stop correctly"'
+
+###########################
+###### SERVICE START ######
+###########################
+
+# start sshd service
+alias sshstart='sudo systemctl start sshd.service && echo "sudo systemctl start sshd.service command worked, SSHD startped Correctly" || echo "Syntax Error, sshd did not start correctly"'
+# start Mysql
+alias sqlstart='sudo service mysql start  && echo "mysql startped correctly" || echo "syntax Error, mysql did not start correctly"'
+# start Nginx
+alias nstart='sudo service nginx start && echo "nginx started correctly" || echo "syntax Error, Nginx did not start correctly"'
+# start php7.4-fpm
+alias fpmstart='sudo systemctl start php7.4-fpm.service && echo "sudo systemctl start php7.4-fpm.service command worked, FPM startped Correctly" || echo "Syntax Error, FPM7.4 did not start correctly"'
+# Start php7.3-fpm
+alias fpm7start='sudo systemctl start php7.3-fpm.service && echo "sudo systemctl start php7.3-fpm.service command worked, FPM startped Correctly" || echo "Syntax Error, FPM7.3 did not start correctly"'
+
+###########################
+##### SERVICE STATUS ######
+###########################
+
+# Show dovecot status
+alias dcstat='sudo service dovecot status'
+# show nginx status
+alias nstat='sudo service nginx status'
+# show mariadb status
+alias sqlstat='sudo service mysql status'
+# show php7.4-fpm status
+alias fpmstat='sudo service php7.4-fpm status'
+
+###########################
+########## AVAHI ##########
+###########################
+
+# Enable avahi-daemon on boot
+#alias aenable='sudo systemctl enable avahi-daemon && echo "sudo systemctl enable avahi-daemon command worked. Avahi-daemon will be ENABLED at boot" || echo "Syntax error. We couldnt enable avahi-daemon at boot. Please check your syntax for errors and try again."'
+# Disable avahi-daemon on boot
+#alias adisable='sudo systemctl disable avahi-daemon && echo "Congrats! sudo systemctl disable avahi-daemon command worked. Avahi-daemon is now DISABLED at  boot" || echo "Syntax error. We couldnt disable avahi-daemon at boot. Please check your syntax for errors and try again."'
+# Start avahi-daemon
+#alias astart='sudo service avahi-daemon start && echo "Congrats! Avahi-daemon STARTED successfully." || echo "Syntax error!!! We couldnt start the avahi-daemon. Please check your syntax for errors and try again."'
+# Stop avahi-daemon
+#alias astop='sudo service avahi-daemon stop && echo "Congrats! Avahi-daemon STOPPED successfully." || echo "Syntax error!!! We couldnt start the avahi-daemon. Please check your syntax for errors and try again."'
+# Reload avahi-daemon
+#alias arl='sudo service avahi-daemon reload && echo "Congrats! Avahi-daemon RELOADED successfully." || echo "Syntax error. We couldnt reload the avahi-daemon. Please check your syntax for errors and try again."'
+# Check avahi-daemos status
+#alias astat='sudo service avahi-daemon status && echo "Congrats! Avahi-daemon status checked successfully." || echo "Syntax error. We couldnt check the status of the avahi-daemon. Please check your syntax for errors and try again."'
+# Edit avahi configuration file
+#alias aconf='sudo nano -c /etc/avahi/avahi-daemon.conf'
+
+###########################
+######## WIREGUARD ########
+###########################
+
+# Start VultrWireguard Tunnel
+alias wgstart='sudo systemctl start wg-quick@wg-client0.service && echo "sudo systemctl start wg-quick@wg-client0.service was successfully run. Wireguard Client Service is now running." || echo "Syntax error. We could not start the Wireguard client. Check your syntax and try again."'
+# Stop VultrWireguard Tunnel
+alias wgstop='sudo systemctl stop wg-quick@wg-client0.service && echo "sudo systemctl stop wg-quick@wg-client0.service was successfully run. Wireguard Client Service has stopped running." || echo "Syntax error. We could not stop the Wireguard client. Check your syntax and try again."'
+# Enable VultrWireguard Tunnel on Boot
+alias wgenable='sudo systemctl enable wg-quick@wg-client0.service && echo "sudo systemctl enable wg-quick@wg-client0.service was successfully run. Wireguard Client Service is now enabled at boot." || echo "Syntax error. We could disable the wireguard client on boot. Check your syntax and try again."'
+# Disable VultrWireguard Tunnel on Boot
+alias wgdisable='sudo systemctl disable wg-quick@wg-client0.service && echo "sudo systemctl disable wg-quick@wg-client0.service was successfully run. Wireguard Client Service is now disabled on boot." || echo "Syntax error. We could not disable the wireguard client on boot. Please check your synta and try again."'
+# Get Status of VultrWireguard Tunnel
+alias wgstat='sudo systemctl status wg-quick@wg-client0.service && echo "Here is the status of your Wireguard Client" || echo "Could not get the status of your Wireguard Client. Check your syntax and try again."'
+
+###########################
+########## DISKS ##########
+###########################
+
+# List all partitions by UUID
+alias uuid='ls -l /dev/disk/by-uuid'
+# List all partitions using blkid
+alias blkid='sudo blkid'
+
+##############################################
+## WORDPRESS VULNERABILITY SCANNER (WPScan) ##
+##############################################
+
+# wpscan update
+alias wpsupdate='wpscan --update'
+# Scan Installed Plugins
+alias wpscakep='wpscan --url https://oddcake.net --enumerate p'
+alias wpsmop='wpscan --url https://mcmo.is --enumerate p'
+alias wpsdanranp='wpscan --url https://danran.rocks --enumerate p'
+# Scan vulnerable plugins
+alias wpscakevp='wpscan --url https://oddcake.net --enumerate vp'
+alias wpsmovp='wpscan --url https://mcmo.is --enumerate vp'
+alias wpsdanranvp='wpscan --url https://danran.rocks --enumerate vp'
+# Scan Installed Themes
+alias wpscaket='wpscan --url https://oddcake.net --enumerate t'
+alias wpsmot='wpscan --url https://mcmo.is --enumerate t'
+alias wpsdanrant='wpscan --url https://danran.rocks --enumerate t'
+# Scan vulnerable themes
+alias wpscakevt='wpscan --url https://oddcake.net --enumerate vt'
+alias wpsmovt='wpscan --url https://mcmo.is --enumerate vt'
+alias wpsdanranvt='wpscan --url https://danran.rocks --enumerate vt'
+# Scan user accounts
+alias wpscakeu='wpscan --url https://oddcake.net --enumerate u'
+alias wpsmou='wpscan --url https://mcmo.is --enumerate u'
+alias wpsdanranu='wpscan --url https://danran.rocks --enumerate u'
+# Scan vulnerable timthumb files
+alias wpscakett='wpscan --url https://oddcake.net --enumerate tt'
+alias wpsmott='wpscan --url https://mcmo.is --enumerate tt'
+alias wpsdanrantt='wpscan --url https://danran.rocks --enumerate tt'
+
+###########################
+###### WORDPRESS CLI ######
+###########################
+
+#alias wp='wp --user=Danran'
+alias wp='sudo -u www-data wp'
+alias wpcliupdate='sudo chown $USER:$USER /usr/local/bin/wp && sudo wp cli update && sudo chown www-data:www-data /usr/local/bin/wp'
+
+###########################
+########### UFW ###########
+###########################
+
+# Get status of UFW
+alias ustat='sudo service ufw status'
+# Get list of rules from UFW.
+alias urules='sudo ufw status'
+# Get list of commands fro UFW
+alias ulist='sudo ufw list'
+
+###########################
+######## DEBUGGING ########
+###########################
+
+# List dovecot listening ports
+alias dports='sudo ss -lnpt | grep dovecot && echo "Dovecot is listening on the above ports" || echo "Dovecot listening ports command failed. Check syntax and try again"'
+# List dovecot users
+alias dusers="sudo doveadm user '*'"
+# Mail log
+alias maillog='cat /var/log/mail.log'
+# Dovecot journal
+alias dovjourn='sudo journalctl -eu dovecot'
+# Check what is listening on which ports by running netstat
+alias ns='netstat -tapn'
+
+###########################
+###### GENERAL LOGS #######
+###########################
+
+# Check the journal/logs of Nginx
+alias nlog='sudo journalctl -eu nginx'
+# Check the journal/logs of clamav-freshclam
+alias clamlog='sudo journalctl -eu clamav-freshclam'
+# Check the journal/logs of the main mail program located at /var/log/mail.log
+alias tailmail='sudo tail -f /var/log/mail.log'
+alias maillog='sudo tail /var/log/mail.log'
+# Tail modsec log
+alias tailmodsec='sudo tail -f /var/log/modsec_audit.log'
+# Cat modseclog
+alias catmodsec='sudo cat /var/log/modsec_audit.log'
+# View recent journal
+alias journal='journalctl -xe'
+# View recent journal with less
+alias journalall='journalctl -xe | less'
+# Show the date and time of most recent shutdown
+alias shutdownlog='last -x shutdown'
+alias shutdownlog2='last -5 shutdown $USER'
+
+###########################
+########## TESTS ##########
+###########################
+# Test fastcgi
+alias fcgicake='curl -I https://www.oddcake.net'
+alias fcgimo='curl -I https://www.mcmo.is'
+alias fcgidanran='curl -I https://www.danran.rocks'
+# Test pagespeed
+alias pscake='curl -I -p https://www.oddcake.net'
+alias psmo='curl -I -p https://www.mcmo.is'
+alias psdanran='curl -I -p https://www.danran.rocks'
+# Test Brotli Compression
+alias brmo='curl -IL https://mcmo.is -H "Accept-Encoding: br"'
+alias brcake='curl -IL https://oddcake.net -H "Accept-Encoding: br"'
+alias brdanran='curl -IL https://danran.rocks -H "Accept-Encoding: br"'
+# Test Gzip Compression
+alias gzmo='curl -IL https://mcmo.is -H "Accept-Encoding: gzip"'
+alias gzcake='curl -IL https://oddcake.net -H "Accept-Encoding: gzip"'
+alias gzdanran='curl -IL https://danran.rocks -H "Accept-Encoding: gzip"'
+
+###########################
+######### FAIL2BAN ########
+###########################
+
+# Restart fail2ban
+alias f2brl='sudo systemctl restart fail2ban && echo "fail2ban was restarted" || echo "fail2ban could NOT RESTART. Check your syntax."'
+# Start fail2ban
+alias f2bstart='sudo systemctl start fail2ban && echo "fail2ban was started" || echo "fail2ban could NOT START. Check your syntax."'
+# Stop fail2ban
+alias f2bstop='sudo systemctl start fail2ban && echo "fail2ban was stopped" || echo "fail2ban could NOT STOP. Check your syntax."'
+# Check client jails of fail2ban
+alias f2bjails='sudo fail2ban-client status && echo "Fail2ban is running these jails" || echo "Fail2ban couldn NOT check which jails are running. Is fail2ban broken?"'
+# Check client sshd jail of fail2ban
+alias f2bsshdstat='sudo fail2ban-client status sshd && echo "The status of the SSHD jail is..." || echo "The state of the SSHD Jail could not be read. Is fail2ban working?"'
+# Check all banned IP's in fail2ban
+alias f2bbanned='sudo zgrep "Ban" /var/log/fail2ban.log* && echo "Fail2ban has banned the following ip addresses..." || echo "Fail2ban could not check the banned IP addresses. Is fail2ban working?"'
+alias f2bbanned2='sudo iptables -L && echo "Here are the iptables. Notice the banned fail2ban IPs." || echo "We could not get the fail2ban iptables. Check your syntax."'
+# Unban all IP's banned by fail2ban
+alias unbanall='sudo fail2ban-client unban --all && echo "Success! All fail2ban IPs have been unbanned" || echo "Fail2ban couldn not unban any clients. Check your syntax."'
+# Quick access to fail2bans jail.local config file
+alias f2bjconf='sudo nano -c /etc/fail2ban/jail.local'
+# Show fail2ban logs
+alias catf2ban='sudo cat /var/log/fail2ban.log'
+# Show tail -f logs of fail2ban
+alias tailf2ban='sudo tail -f /var/log/fail2ban.log'
+# Show fail2ban logs with tail (omit the -f flag)
+alias f2blogs='sudo tail /var/log/fail2ban.log'
+
+###########################
+######### DOVECOT #########
+###########################
+
+# Show dovecot settings
+alias dcsettings='dovecot -n && echo "Your current dovecot settings are..." || echo "The Doevecot settings could not be read. Is dovecot working?"'
+# Show dovecot log locations
+alias dcloglocations='sudo doveadm log find && echo "Your Dovecot logs are located at..." || echo "We couldn not find your Dovecot log locations, could you please check your settings and try again?"'
+# Show last Dovecot errors by printing the last 1000 errors of a running Dovecot.
+alias dcerrors='sudo doveadm log errors && echo "Dovecot has the following errors in its log..." || echo "Dovecot could not print the error log. Is Dovecot running?"'
+
+###########################
+######### POSTFIX #########
+###########################
+
+# show postfix status
+alias pstat='sudo service postfix status'
+# Restart Postfix
+alias pfrl='sudo systemctl restart postfix && echo "Postfix restarted correctly! YAY!" || echo "Postfix didnt restart correctly, FUCK!!!"'
+# [Whitelist] Edit the postfix whitelist
+alias pfwl='sudo nano /etc/postfix/rbl_override'
+# [Whitelist] Create the postfix override (rbl_override.db) database, or update it with new rules from /etc/postfix/rbl_override using the postmap command
+alias pfwldb='sudo postmap /etc/postfix/rbl_override && echo "Success! Postmap has created (or updated) your postfix whitelist database located at /etc/postfix/rbl_override. Your new settings have been whitelisted." || echo " Failure! Postmap was unable to update your whitelists (/etc/postfix/rbl_override) database. Check your syntax in /etc/postfix/rbl_override and try again."'
+# Edit the postfix mail configuration file main.cf
+alias pfmain='sudo nano /etc/postfix/main.cf'
+#  Show list of supported packages in postfix
+alias pfsupport='postconf -m && echo "Postfix supports the following..." || echo "We could not show you postfix supported applications for some reason. Strange..."'
+# Open postfix header checks file for banning certain headers.
+alias pfheaderban='sudo nano /etc/postfix/header_checks'
+# Open postfix body checks file for banning certain lines in a body.
+alias pfbodyban='sudo nano /etc/postfix/body_checks'
+
+################################
+### PFLOGSUMM (POSTFIX LOGS) ###
+################################
+
+# Generate Postfix log report for today
+alias pflogday='sudo pflogsumm -d today /var/log/mail.log'
+# Generate Postfix Log report for today and emit "problem" reports (Bounces, defers, warnings, rejects) before "normal" stats, using the --problems-first flag.
+alias pflogday2='sudo pflogsumm -d today /var/log/mail.log --problems-first'
+# Generate Postfix log report for today and append the email from address to each listing in the reject report, by using the --rej-add-from flag.
+alias pflogday3='sudo pflogsumm -d today /var/log/mail.log --rej-add-from'
+# Generate Postfix log report for today and show the full reason in reject summaries, by using the --verbose-msg-detail flag
+alias pflogday4='sudo pflogsumm -d today /var/log/mail.log --rej-add-from --verbose-msg-detail'
+# Generate Postfix log report for yesterday
+alias pflogyesterday='sudo pflogsumm -d yesterday /var/log/mail.log'
+# Generate Postfix log report for this week
+alias pflogweek='sudo pflogsumm /var/log/mail.log'
+
+
+###########################
+######## OPENDMARC ########
+###########################
+
+# Check status of OpenDmarc
+alias odmstat='sudo systemctl status opendmarc && echo "Here is the status of Opendmarc..." || echo "Dovecot could get status of Opendmarc. Is Opendmarc running?"'
+# Restart OpenDmarc
+alias odmrl='sudo systemctl restart opendmarc && echo "Opendmarc has restarted successfully..." || echo "Opendmarc could not restart. Is Opendmarc running?"'
+# Stop OpenDmarc
+alias odmstop='sudo systemctl stop opendmarc && echo "Opendmarc has stopped successfully..." || echo "Opendmarc could not stop. Is Opendmarc running?"'
+# Start OpenDmarc
+alias odmstart='sudo systemctl start opendmarc && echo "Opendmarc has started successfully..." || echo "Opendmarc could not start. Is Opendmarc broken?"'
+# Open opendmarc conf file
+alias odmconf='sudo nano /etc/opendmarc.conf'
+# Whitelist opendmarc ip addresses
+alias odmwl='sudo nano /etc/opendmarc/ignore.hosts'
+
+###########################
+########## CLAM ###########
+###########################
+
+# There will be two systemd services installed by ClamAV:
+# 1) clamav-daemon.service: the Clam AntiVirus userspace daemon
+# 2) clamav-freshclam.service: the ClamAV virus database updater
+
+# Start clamav-freshclam.service
+alias freshclamstart='systemctl start clamav-freshclam && echo "clamav-freshclam has started..." || echo "clamav-freshclam could not start. Is clamav-freshclam broken?"'
+# Stop clamav-freshclam.service
+alias freshclamstop='systemctl stop clamav-freshclam && echo "clamav-freshclam has stopped..." || echo "clamav-freshclam could not stop. Is clamav-freshclam broken?"'
+# Update clamav-freshclam.service
+alias freshclamupdate='sudo freshclam && echo "clamav-freshclam has been updated..." || echo "clamav-freshclam has not been updated. Is clamav-freshclam update broken?"'
+# Check the status of clamav-freshclam.service
+alias freshclamstat='systemctl status clamav-freshclam && echo "clamav-freshclam has a status of..." || echo "clamav-freshclam could not show its status. Is clamav-freshclam broken?"'
+# Restart clamav-freshclam.service
+alias freshclamrl='systemctl restart clamav-freshclam && echo "clamav-freshclam has restarted..." || echo "clamav-freshclam could not restart. Is clamav-freshclam broken?"'
+# Check the journal/log of clamav-freshclam
+alias freshclamlog='sudo journalctl -eu clamav-freshclam && echo "clamav-freshclams logs are here..." || echo "clamav-freshclam could not show its journal/log. Are clamav-freshclam  logs broken?"'
+# Check the status of clamav-daemon
+alias clamdstat='sudo systemctl status clamav-daemon && echo "clamav-daemon has a status of..." || echo "clamav-daemon could not show its status. Is clamav-daemon broken?"'
+# Restart clamav-daemon
+alias clamdrl='sudo systemctl restart clamav-daemon && echo "clamav-daemon has restarted..." || echo "clamav-daemon could not restart. Is clamav-daemon broken?"'
+# Start a virus scan with clamav-daemon.service's clamdscan.
+alias clamdscan='sudo clamdscan --fdpass / && echo "Clamdscan is searching for viruses..." || echo "Clamdscan could not scan for viruses. Is clamdscan virus scan broken?"'
+
+###########################
+######### Amavis ##########
+###########################
+
+# Check the status of amavis
+alias amavisstat='systemctl status amavis && echo "Amavis has a status of..." || echo "Amavis could not show its status. Is Amavis broken?"'
+# Restart Amavis
+alias amavisrl='systemctl restart amavis && echo "Amavis has restarted..." || echo "Amavis could not restart. Is Amavis broken?"'
+# Start Amavis
+alias amavisstart='systemctl start amavis && echo "Amavis has started..." || echo "Amavis could not start. Is Amavis broken?"'
+# Stop Amavis
+alias amavisstop='systemctl stop amavis && echo "Amavis has stopped..." || echo "Amavis could not stop. Is Amavis running?"'
+# Check the journal/logs of Amavis
+alias amavislog='sudo journalctl -eu amavis'
+# Check the amount of processess amavis is using. # It should be 4 for 4 cores.
+alias amavisprocess='sudo amavisd-nanny'
+
+###########################
+######## Postgrey #########
+###########################
+
+# Start postgrey
+alias pgstart='sudo systemctl start postgrey && echo "Postgrey has started ..." || echo "Postgrey could not start. Check syntax for errors."'
+# Stop postgrey
+alias pgstop='sudo systemctl stop postgrey && echo "Postgrey has stopped ..." || echo "Postgrey could not stop. Check syntax for errors."'
+# Restart postgrey
+alias pgrl='sudo systemctl restart postgrey && echo "Postgrey has restarted ..." || echo "Postgrey could not restart. Check syntax for errors."'
+# Enable Postgrey at boot time
+alias pgenable='sudo systemctl enable postgrey && echo "Postgrey is not enabled at boot time" || echo "Postgrey could not enable itself at boot time. Check for errors."'
+# Disable Postgrey at boot time
+alias pgdisable='sudo systemctl disable postgrey && echo "Postgrey is now disabled at boot time" || echo "Postgrey could not disblae itself at boot time. Check for errors."'
+# Check the ports that postgrey is listening on.
+alias pglisten='sudo netstat -lnpt | grep postgrey && echo "Netstat has checked postgreys listening ports and they are ^^^^^^" || echo "Netstat could not check postgreys listening ports. Is it working?"'
+alias pglisten2='sudo netstat -lnpt | grep 10023 && echo "Netstat has checked postgreys listening ports and they are ^^^^^^" || echo "Netstat could not check postgreys listening ports. Is it working?"'
+# Check postgrey logs
+alias pglogs='sudo journalctl -u postgrey && echo "Here are the postgrey logs ^^^^^^^" || echo "Postgrey could not show you logs. Check for errors."'
+# Edit the postgrey clients whitelist. Add hostnames you want to whitelist, to this file.
+alias pgclientwl='sudo nano /etc/postgrey/whitelist_clients'
+# Edit the postgrey recipient whitelist (allow outgoing). Add recipient addresses you want to whitelist, to this file.
+alias pgrecipwl='sudo nano /etc/postgrey/whitelist_recipients'
+
+###########################
+###### POLICY SERVER ######
+###########################
+
+# Restart rate-limiting policy server
+alias psrl='sudo systemctl restart policyd-rate-limit && echo "The rate-limiting policy server has restarted successfully." || echo "The rate-limiting policy server could not restart. Is it running?"'
+# Check the log of your policy daemin (particularly after sending an email from your email client. https://www.linuxbabe.com/mail-server/how-to-stop-your-emails-being-marked-as-spam)
+alias pslog='sudo journalctl -eu policyd-rate-limit && echo "Here are the logs of the policy daemon..." || echo "The policy daemon could not show you logs."'
+# Delete old records from the policy rate limit database.
+alias psclean='sudo policyd-rate-limit --clean && echo "Policy rate limit database has been cleaned." || echo "The policy rate limit database could not be cleaned."'
+
+###########################
+########## SYSTEM #########
+###########################
+
+# Show all system users in a list format
+alias sysusers='sudo cat /etc/shadow && echo "Here are the users for your system..." || echo "We could not display your systems users. Check your syntax and try again."'
+# Reload the system control daemon
+alias scdrl='sudo systemctl daemon-reload && echo "System daemon has been reloaded" || echo "We could not reload the sytem daemon. Check for errors."'
+# Check your current IP whitelist/blacklist score of dnswl.org
+alias wlscore='host 6.125.28.149.list.dnswl.org && echo "Your whitelist score has been checked and is..." || echo "We could not check your score on dnswl.org. Check for errors."'
+
+###########################
+########### APT ###########
+###########################
+
+# Show all manually installed (packages installed by $USER with "apt install" packages) packages.
+alias installed='apt-mark showmanual && echo "Here are the packages you installed..." || echo "We couldn not display the installed packages. Check your syntax."'
+
+###########################
+######## MAN PAGES ########
+###########################
+
+alias man-image='cat /usr/local/bin/image-readme.txt'
+
+###########################
+#### RAM & DISK SPACE #####
+###########################
+
+alias ram='free -m && echo "Your ram stats are as follows..." || echo "We could not get your ram stats. Check your syntax and try again"'
+alias swap='swapon --show'
+
+###########################
+#### Nginx Beautifier #####
+###########################
+
+alias npretty='sudo nginxfmt.py -i 4'
+
+###########################
+##### Mysql / Maridb ######
+###########################
+
+# Check Queries Per Second (QPS) in Mysql, which is a metric that monitors the load on the database server.
+alias sqlq='sudo mysqladmin status'
+
+###########################
+##### Wordpress CLI #######
+###########################
+
+# Regenerate all thumbnails
+alias regen='wp media regenerate --yes'
+
+###########################
+######### System ##########
+###########################
+
+# Check the kernel version number
+alias kernal='uname -r'
+
+###########################
+######### Unbound #########
+###########################
+
+alias unboundstat='sudo service unbound status'
+alias unboundstart='sudo service unbound start'
+alias unboundstop='sudo service unbound stop'
+alias unboundrl='sudo service unbound restart'
+
+###########################
+########## NGINX ##########
+###########################
+
+# Hold nginx from upgrading due to Mod_security having to be rebuilt with upgrade
+alias nhold='sudo apt-mark hold nginx && echo "Your Nginx packages are now being held" || echo "We could not put a hold on your Nginx Upgrades"'
+# Release nginx from a Hold to allow for upgrading packages.
+alias nrelease='sudo apt-mark unhold nginx && echo "Your Nginx Packages are released and can now be upgraded" || echo "We couldn NOT  release your Nginx packages from a hold. Check your syntax and try again."'
+# Quick access to nginx.conf
+alias nconf='sudo nano -c /etc/nginx/nginx.conf'
+# Quick access to sites available
+alias savail='cd /etc/nginx/sites-available/'
+# Quick access to conf.d folder
+alias confd='cd /etc/nginx/conf.d/'
+# Quick access to totemlife.xyz in sites available
+alias vtotem='sudo nano -c /etc/nginx/sites-available/totemlife.xyz.conf'
+# Quick access to shamigfrom212.xyz in sites available
+alias vshamig='sudo nano -c /etc/nginx/sites-available/shamigfrom212.xyz.conf'
+# Quick access to danranda.com in sites available
+alias vdan='sudo nano -c /etc/nginx/sites-available/danranda.com.conf'
+# Quick access to oddcake.net in sites available
+alias vcake='sudo nano -c /etc/nginx/sites-available/01-oddcake.net.conf'
+# Quick access to danran.rocks in sites available
+alias vdanran='sudo nano -c /etc/nginx/sites-available/02-danran.rocks.conf'
+# Quick access to mcmo.is in sites available
+alias vmo='sudo nano -c /etc/nginx/sites-available/03-mcmo.is.conf'
+# Quick access to /etc/nginx/sites-available/default
+alias vdef='sudo nano -c /etc/nginx/sites-available/default'
+# Quick access to /etc/nginx/sites-available/bitchtits.live.conf
+alias vbitch='sudo nano -c /etc/nginx/sites-available/bitchtits.live.conf'
+
+### Copy secure and insecure configuration files to active configuration.
+
+## Update 01-oddcake.net.conf.insecure/02-danran.rocks.insecure/03-mcmo.is.insecure from current default corresponding configuration files (e.g. cp /etc/nginx/sites-available/01-oddcake.net.conf to /etc/nginx/sites-available/01-oddcake.net.conf.insecure).
+# Update 01-oddcake.net.conf.insecure/secure from current working config file.
+alias cakeupins='sudo cp /etc/nginx/sites-available/01-oddcake.net.conf /etc/nginx/sites-available/01-oddcake.net.conf.insecure && echo "01-oddcake.net.conf.insecure was updated from current configuration." || echo "01-oddcake.net.conf.insecure was not updated from current configuration. Please check cp syntax and try again."'
+alias cakeupsec='sudo cp /etc/nginx/sites-available/01-oddcake.net.conf /etc/nginx/sites-available/01-oddcake.net.conf.secure && echo "01-oddcake.net.conf.secure was updated from current configuration." || echo "01-oddcake.net.conf.secure was not updated from current configuration. Please check cp syntax and try again."'
+# Update 02-danran.rocks.conf.insecure/secure from current working config file.
+alias danupins='sudo cp /etc/nginx/sites-available/02-danran.rocks.conf /etc/nginx/sites-available/02-danran.rocks.conf.insecure && echo "02-danran.rocks.conf.insecure was updated from current configuration." || echo "02-danran.rocks.conf.insecure was not updated from current 02-danran.rocks.conf file. Please check CP syntax and try again."'
+alias danupsec='sudo cp /etc/nginx/sites-available/02-danran.rocks.conf /etc/nginx/sites-available/02-danran.rocks.conf.secure && echo "02-danran.rocks.conf.secure was updated from current configuration." || echo "02-danran.rocks.conf.secure was not updated from current 02-danran.rocks.conf configuration file. Please check CP syntax and try again."'
+# Update 03-mcmo.is.conf.insecure/secure from current working config file.
+alias moupins='sudo cp /etc/nginx/sites-available/03-mcmo.is.conf /etc/nginx/sites-available/03-mcmo.is.conf.insecure && echo "03-mcmo.is.conf.insecure was updated from current configuration." || echo "03-mcmo.is.conf.insecure was not updated current config. Please check CP syntax and try again."'
+alias moupsec='sudo cp /etc/nginx/sites-available/03-mcmo.is.conf /etc/nginx/sites-available/03-mcmo.is.conf.secure && echo "03-mcmo.is.conf.secure was updated from current configuration." || echo "03-mcmo.is.conf.secure was not updated current config. Please check CP syntax and try again."'
+
+### Backup *.conf~secure and *.conf.insecure files from corresponding file
+
+# Backup 01-oddcake.net.conf.secure and 01-oddcake.net.conf.insecure files to .bak files.
+alias cakebakins='sudo cp /etc/nginx/sites-available/01-oddcake.net.conf.insecure /etc/nginx/sites-available/01-oddcake.net.conf.insecure.bak && echo "01-oddcake.net.conf.insecure was backed up to 01-oddcake.net.conf.insecure.bak" || echo "01-oddcake.net.conf.insecure was not backed up to 01-oddcake.net.conf.insecure.bak. Check your CP command and try again."'
+alias cakebaksec='sudo cp /etc/nginx/sites-available/01-oddcake.net.conf.secure /etc/nginx/sites-available/01-oddcake.net.conf.secure.bak && echo "01-oddcake.net.conf.secure was backed up to 01-oddcake.net.conf.secure.bak" || echo "01-oddcake.net.conf.secure was not backed up to 01-oddcake.net.conf.secure.bak. Check your CP command and try again."'
+# Backup 02-danran.rocks.conf.secure and 02-danran.rocks.conf.insecure files to .bak files.
+alias danbakins='sudo cp /etc/nginx/sites-available/02-danran.rocks.conf.insecure /etc/nginx/sites-available/02-danran.rocks.conf.insecure.bak && echo "02-danran.rocks.net.conf.insecure was backed up to 02-danran.rocks.conf.insecure.bak" || echo "02-danran.rocks.conf.insecure was not backed up to 02-danran.rocks.conf.insecure.bak. Check your CP command and try again."'
+alias danbaksec='sudo cp /etc/nginx/sites-available/02-danran.rocks.conf.secure /etc/nginx/sites-available/02-danran.rocks.conf.secure.bak && echo "02-danran.rocks.conf.secure was backed up to 02-danran.rocks.conf.secure.bak" || echo "02-oddcake.net.conf.secure was not backed up to 02-danan.rocks.conf.secure.bak. Check your CP command and try again."'
+# Backup 03-mcmo.is.conf.secure & 03-mcmo.is.conf.insecure files to .bak files.
+alias mobakins='sudo cp /etc/nginx/sites-available/03-mcmo.is.conf.insecure /etc/nginx/sites-available/03-mcmo.is.conf.insecure.bak && echo "03-mcmo.is.conf.insecure was backed up to 03-mcmo.is.conf.insecure.bak" || echo "03-mcmo.is.conf.insecure was not backed up to 03-mcmo.is.conf.insecure.bak. Check your CP command and try again."'
+alias mobaksec='sudo cp /etc/nginx/sites-available/03-mcmo.is.conf.secure /etc/nginx/sites-available/03-mcmo.is.conf.secure.bak && echo "03-mcmo.is.conf.secure was backed up to 03-mcmo.is.conf.secure.bak" || echo "03-mcmo.is.conf.secure was not backed up to 03-mcmo.is.conf.secure.bak. Check your CP command and try again."'
+
+###########################
+## NGINX - SITES ENABLED ##
+###########################
+
+### ENABLE ###
+# Enable oddcake.net.conf
+alias ecake='sudo ln -s /etc/nginx/sites-available/01-oddcake.net.conf /etc/nginx/sites-enabled/01-oddcake.net.conf && echo "OddCake.net is enabled correctly. Please reload EngineX" || echo "Syntax Error, Oddcake.net not enabled"'
+# Enable mcmo.is.conf
+alias emo='sudo ln -s /etc/nginx/sites-available/03-mcmo.is.conf /etc/nginx/sites-enabled/03-mcmo.is.conf && echo "McMo.is is enabled correctly. Please reload nginx." || echo "Syntax Error, Mcmo.is did not enabled correctly"'
+# Enable danran.rocks.conf
+alias edanran='sudo ln -s /etc/nginx/sites-available/02-danran.rocks.conf /etc/nginx/sites-enabled/02-danran.rocks.conf && echo "Danran.rocks enabled correctly. Please reload nginx." || echo "Syntax Error, Danran.rocks didnt enable correctly"'
+# Enable /etc/nginx/sites-available/default
+alias edef='sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default && echo "default nginx site enabled correctly. Please reload nginx." || echo "Syntax Error. Default nginx site not enabled. Please check your settings and try again."'
+
+### DISABLE ###
+# Disable oddcake.net.conf
+alias dcake='sudo rm /etc/nginx/sites-enabled/01-oddcake.net.conf && echo "OddCake.net disabled Correctly please reload nginx" || echo "Syntax Error, Oddcake.net not disabled and is still active."'
+# Disable mcmo.is.conf
+alias dmo='sudo rm /etc/nginx/sites-enabled/03-mcmo.is.conf && echo "McMo.is was disabled correctly. Please reload EngineX" || echo "Syntax Error, mcmo.is was not disabled and is still active"'
+# Disable danran.rocks
+alias ddanran='sudo rm /etc/nginx/sites-enabled/02-danran.rocks.conf && echo "Danran.rocks was disabled correctly. Please reload EngineX." || echo "Syntax Error, Danran.rocks was not disabled, and is still active."'
+# Disable /etc/nginx/sites-enabled/default
+alias ddef='sudo rm /etc/nginx/sites-enabled/default && echo "Default EngineX conf file has been disabled. Please reload nginx." || echo "Syntax Error. Default nginx conf file has not been disabled. Please check your settings and try again."'
+
+###########################
+###### NGINX MODULES ######
+###########################
+
+# Enable Modules
+alias e00='sudo ln -s /etc/nginx/modules-available/00-mod-http-security-headers.conf /etc/nginx/modules-enabled/00-mod-http-security-headers.conf'
+alias e01='sudo ln -s /etc/nginx/modules-available/01-mod-http-modsecurity.conf /etc/nginx/modules-enabled/01-mod-http-modsecurity.conf'
+alias e02='sudo ln -s /etc/nginx/modules-available/02-mod-http-brotli-filter.conf /etc/nginx/modules-enabled/02-mod-http-brotli-filter.conf'
+alias e03='sudo ln -s /etc/nginx/modules-available/03-mod-http-brotli-static.conf /etc/nginx/modules-enabled/03-mod-http-brotli-static.conf'
+alias e04='sudo ln -s /etc/nginx/modules-available/04-mod-http-cache-purge.conf /etc/nginx/modules-enabled/04-mod-http-cache-purge.conf'
+alias e05='sudo ln -s /etc/nginx/modules-available/05-mod-pagespeed.conf /etc/nginx/modules-enabled/05-mod-pagespeed.conf'
+
+# Disable Modules
+alias d00='sudo rm /etc/nginx/modules-enabled/00-mod-http-security-headers.conf'
+alias d01='sudo rm /etc/nginx/modules-enabled/01-mod-http-modsecurity.conf'
+alias d02='sudo rm /etc/nginx/modules-enabled/02-mod-http-brotli-filter.conf'
+alias d03='sudo rm /etc/nginx/modules-enabled/03-mod-http-brotli-static.conf'
+alias d04='sudo rm /etc/nginx/modules-enabled/04-mod-http-cache-purge.conf'
+alias d05='sudo rm /etc/nginx/modules-enabled/05-mod-pagespeed.conf'
+
+############################
+###### NGINX - MODULES #####
+############################
+
+##
+# MODULE - PAGESPEED
+##
+
+# Open Pagespeed configuration file
+alias psconf='sudo nano /etc/nginx/pagespeed.conf'
+# Cat pagespeed configuration file
+alias pscat='sudo cat /etc/nginx/pagespeed.conf'
+# Flush whole (legacy mode) pagespeed cache
+alias psflush='sudo touch /usr/share/nginx/ngx_pagespeed_cache/cache.flush && echo "Pagespeed flushed its cache successfully!" || echo "Their was a problem flushing the pagespeed cache. Check your syntax and try again."'
+
+##
+# MODULE - MODSECURITY
+##
+
+# Turn on Modsecurity
+alias modsecon='sudo cp /etc/nginx/nginx.conf.modsec-on /etc/nginx/nginx.conf && sudo service nginx restart && echo "Modsecurity is now on and Enginx has been reloaded." || echo "Modsecurity was not turned on. Nginx probably wasn not reloaded. Check syntax and try again"'
+# Turn off Modsecurity
+alias modsecoff='sudo cp /etc/nginx/nginx.conf.modsec-off /etc/nginx/nginx.conf && sudo service nginx restart && echo "Modsecurity was turned off and Enginx has been reloaded." || echo "Modsecurity was NOT turned off. Nginx probably was NOT reloaded. Check syntax and try again"'
+
+###########################
+######## NETPLAN ##########
+###########################
+
+## Surf Soho Wi-Fi
+#  ---------------
+
+# Connect the Pi to the Surf Soho Wi-Fi. Note: Remember to apply changes with netplan.
+alias surfwifi='sudo mv /etc/netplan/*_only* /etc/netplan/surf-surfdns_only-wifi && sudo cp /etc/netplan/configs/surf.surfdns.wifi /etc/netplan/50-cloud-init.yaml && echo "Surf Soho Wi-Fi Network Config (with Surf Local DNS) has been copied to Netplan SUCESSFULLY! Remember to apply changes with netplan." || echo "ERROR! Copying the Surf Wi-Fi Config to Netplan was UNSUCCESSFUL. Check your syntax and try again."'
+# Connect the Pi to the Surf Soho Wi-Fi using Cloudflare DNS. Note: Remember to apply changes with netplan.
+alias surfwificf='sudo mv /etc/netplan/*_only* /etc/netplan/surf-cloudflaredns_only-wifi && sudo cp /etc/netplan/configs/surf.cloudflaredns.wifi /etc/netplan/50-cloud-init.yaml && echo "Surf Soho Wi-Fi Network Config (with cloudflare dns) has been copied to Netplan SUCESSFULLY! Remember to apply changes to netplan." || echo "ERROR! Copying the Surf Wi-Fi (cloudflare dns) Config to Netplan was UNSUCCESSFUL. Check your syntax and try again."'
+# Connect ethernet Only using local DNS
+alias surfeth='sudo mv /etc/netplan/*_only* /etc/netplan/anyrouter-anyrouterdns_only-ethernet && sudo cp /etc/netplan/configs/anyrouter.anyrouterdns.ethernet /etc/netplan/50-cloud-init.yaml && echo "Ethernet Only Network Config (with local dns) has been copied to Netplan SUCESSFULLY! Remember to apply changes to netplan." || echo "ERROR! Copying the Anyrouter Ethernet (local dns) Config to Netplan was UNSUCCESSFUL. Check your syntax and rename the description file in the netplan directory."'
+# Connect ethernet only using cloudflare DNS
+alias surfethcf='sudo mv /etc/netplan/*_only* /etc/netplan/anyrouter-cloudflaredns_only-ethernet && sudo cp /etc/netplan/configs/anyrouter.cloudflaredns.ethernet /etc/netplan/50-cloud-init.yaml && echo "Ethernet Only Network Config (with cloudflare dns) has been copied to Netplan SUCESSFULLY! Remember to apply changes to netplan." || echo "ERROR! Copying the Anyrouter Ethernet (with cloudflare DNS) Config to Netplan was UNSUCCESSFUL. Check your syntax and rename the description file in the netplan directory."'
+
+
+# r8000 Wi-Fi
+# -----------
+# Connect the Pi to the r8000 DDWRT Wi-Fi. Note: Remember to apply changes with netplan.
+#alias r8000wifi='sudo cp /etc/netplan/configs/r8000.r8000dns.working /etc/netplan/50-cloud-init.yaml && echo "R8000 Wi-Fi Network Config \(with R8000 Local DNS \) has been copied to Netplan SUCCESSFULLY. Remember to apply changes with netplan." || echo "ERROR! Copying the r8000 Wi-Fi Config to Netplan was UNSUCCESSFUL. Check your syntax and try again."'
+# Connect the Pi to the r8000 DDWRT Wi-Fi using Cloudflare DNS. Note: Remember to apply changes with netplan.
+#alias r8000wificf='sudo cp /etc/netplan/configs/r8000.cloudflaredns.working /etc/netplan/50-cloud-init.yaml && echo "R8000 Wi-Fi Network Config (with cloudflare dns) has been copied to Netplan SUCESSFULLY! Remember to apply changes to Netplan." || echo "ERROR! Copying the R8000 Wi-Fi (cloudflare dns) config to Netplan was UNSUCCESSFUL. Check your syntax and try again."'
+
+# Netplan apply
+alias npapply='sudo netplan apply && echo "Netplan Sucessfully applied" || echo "Error! Netplan was NOT APPLIED! Check your syntax and try again!"'
+
+###########################
+######### OPENVPN #########
+###########################
+# Start $USER service at boot with openvpn@$USER.service
+#alias bvpnstart='sudo systemctl start openvpn@$USER.service && echo "systemctl start openvpn@$USER.service worked. openvpn@$USER.service started successfully." || echo "Syntax error. We couldnt start openvpn@$USER.service, check your conf file and try again."'
+# Stop $USER VPN service
+#alias bvpnstop='sudo systemctl stop openvpn@$USER.service && echo "systemctl stop openvpn@$USER.service worked. openvpn@$USER.service is stopped." || echo "Syntax error. We couldnt stop openvpn@$USER.service, check your conf file and try again."'
+# Enable $USER VPN Service at boot
+#alias bvpnenable='sudo systemctl enable openvpn@$USER.service && echo "systemctl enable openvpn@$USER.service worked. openvpn@$USER.service enabled at boot." || echo "Syntax error. We couldnt enable openvpn@$USER.service, check your conf file and try again."'
+# Disable $USER VPN Service at boot
+#alias bvpndisable='sudo systemctl disable openvpn@$USER.service && echo "systemctl disable openvpn@$USER.service worked. openvpn@$USER.service disabled at boot." || echo "Syntax error. We couldnt disable openvpn@$USER.service at boot, check your conf file and try again."'
+# Check status of VPN service at openvpn@$USER.service
+#alias bvpnstat='sudo systemctl status openvpn@$USER.service && echo "systemctl status openvpn@$USER.service worked. Here is the status of openvpn@$USER.service." || echo "Syntax error. We couldnt check the status of openvpn@$USER.service, check your syntax and try again."'
+# Disable openvpn-server@server.service
+#alias dvpn='sudo systemctl disable openvpn-server@server.service && echo "openvpn-server@server.service disabled" || echo "openvpn-server@server.service NOT DISABLED. CHECK YOUR SYNTAX!"'
+
+###########################
+######## OPENVPN2 #########
+###########################
+
+### AWS Dans account
+# Start $USER service at boot with openvpn@$USER.service
+alias bvpnstart='sudo systemctl start openvpn-client@$USER && echo "systemctl start openvpn@$USER.service worked. openvpn@$USER.service started successfully." || echo "Syntax error. We couldnt start openvpn@$USER.service, check your conf file and try again."'
+# Stop $USER VPN service
+alias bvpnstop='sudo systemctl stop openvpn-client@$USER && echo "systemctl stop openvpn-client@$USER.service worked. openvpn-client@$USER.service is stopped." || echo "Syntax error. We couldnt stop openvpn-client@$USER.service, check your conf file and try again."'
+# Enable $USER VPN Service at boot
+alias bvpnenable='sudo systemctl enable openvpn-client@$USER && echo "systemctl enable openvpn-client@$USER.service worked. openvpn-client@$USER.service enabled at boot." || echo "Syntax error. We couldnt enable openvpn-client@$USER.service, check your conf file and try again."'
+# Disable $USER VPN Service at boot
+alias bvpndisable='sudo systemctl disable openvpn-client@$USER && echo "systemctl disable openvpn-client@$USER.service worked. openvpn-client@$USER.service disabled at boot." || echo "Syntax error. We couldnt disable openvpn-client@$USER.service at boot, check your conf file and try again."'
+# Check status of VPN service at openvpn@$USER.service
+alias bvpnstat='sudo systemctl status openvpn-client@$USER && echo "systemctl status openvpn-client@$USER.service worked. Here is the status of openvpn-client@$USER.service." || echo "Syntax error. We couldnt check the status of openvpn-client@$USER.service, check your syntax and try again."'
+# Disable openvpn-server@server.service
+alias dvpnserver='sudo systemctl disable openvpn-server@server.service && echo "openvpn-server@server.service disabled" || echo "openvpn-server@server.service NOT DISABLED. CHECK YOUR SYNTAX!"'
+
+### AWS M's account
+# Start $USER service at boot with openvpn@$USER.service
+alias mvpnstart='sudo systemctl start openvpn-client@mAWS-VPN-Pi && echo "systemctl start openvpn@mAWS-VPN-Pi worked. openvpn@mAWS-VPN-Pi.service started successfully." || echo "Syntax error. We couldnt start openvpn@mAWS-VPN-Pi.service, check your conf file and try again."'
+# Stop $USER VPN service
+alias mvpnstop='sudo systemctl stop openvpn-client@mAWS-VPN-Pi && echo "systemctl stop openvpn-client@mAWS-VPN-Pi worked. openvpn-client@mAWS-VPN-Pi.service is stopped." || echo "Syntax error. We couldnt stop openvpn-client@mAWS-VPN-Pi.service, check your conf file and try again."'
+# Enable $USER VPN Service at boot
+alias mvpnenable='sudo systemctl enable openvpn-client@mAWS-VPN-Pi && echo "systemctl enable openvpn-client@mAWS-VPN-Pi worked. openvpn-client@mAWS-VPN-Pi.service enabled at boot." || echo "Syntax error. We couldnt enable openvpn-client@mAWS-VPN-Pi.service, check your conf file and try again."'
+# Disable $USER VPN Service at boot
+alias mvpndisable='sudo systemctl disable openvpn-client@mAWS-VPN-Pi && echo "systemctl disable openvpn-client@mAWS-VPN-Pi worked. openvpn-client@mAWS-VPN-Pi.service disabled at boot." || echo "Syntax error. We couldnt disable openvpn-client@mAWS-VPN-Pi.service at boot, check your conf file and try again."'
+# Check status of VPN service at openvpn@$USER.service
+alias mvpnstat='sudo systemctl status openvpn-client@mAWS-VPN-Pi && echo "systemctl status openvpn-client@mAWS-VPN-Pi worked. Here is the status of openvpn-client@mAWS-VPN-Pi.service." || echo "Syntax error. We couldnt check the status of openvpn-client@mAWS-VPN-Pi.service, check your syntax and try again."'
+# Disable openvpn-server@server.service
+alias mvpnserver='sudo systemctl disable openvpn-server@server.service && echo "openvpn-server@server.service disabled" || echo "openvpn-server@server.service NOT DISABLED. CHECK YOUR SYNTAX!"'
+
+###########################
+######## OPENVPN3 #########
+###########################
+
+### Vultr
+# Start VultrPi service at boot with openvpn@VultrPi.service
+alias vvpnstart='sudo systemctl start openvpn-client@VultrPi && echo "systemctl start openvpn-client@VultrPi worked and openvpn-client@VultrPi.service started successfully." || echo "Syntax error. We couldnt start openvpn-client@VultrPi, check your conf file and try again."'
+# Stop VultrPi VPN service
+alias vvpnstop='sudo systemctl stop openvpn-client@VultrPi && echo "systemctl stop openvpn-client@VultrPi worked. openvpn@VultrPi.service is stopped." || echo "Syntax error. We couldnt stop openvp-clientn@VultrPi, check your conf file and try again."'
+# Enable VultrPi VPN Service at boot
+alias vvpnenable='sudo systemctl enable openvpn-client@VultrPi && echo "systemctl enable openvpn-client@VultrPi worked. openvpn@VultrPi.service enabled at boot." || echo "Syntax error. We couldnt enable openvpn-client@VultrPi, check your conf file and try again."'
+# Disable $USER VPN Service at boot
+alias vvpndisable='sudo systemctl disable openvpn-client@VultrPi && echo "systemctl disable openvpn-client@VultrPi worked. openvpn@VultrPi.service disabled at boot." || echo "Syntax error. We couldnt disable openvpn-client@VultrPi at boot, check your conf file and try again."'
+# Check status of VPN service at openvpn@$USER.service
+alias vvpnstat='sudo systemctl status openvpn-client@VultrPi && echo "systemctl status openvpn-client@VultrPi worked. Here is the status of openvpn@VultrPi.service." || echo "Syntax error. We couldnt check the status of openvpn-client@VultrPi, check your syntax and try again."'
+
+# Start openvpn session with listed configuration
+alias vvpn3start='openvpn3 session-start --config-path /net/openvpn/v3/configuration/6497c61fx8b38x4ff2x8508xff9af0cb41bd'
+alias vvpn3restart='openvpn3 session-manage --config /etc/openvpn3/VultrPi.conf --restart'
+alias vvpn3stop='openvpn3 session-manage --config /etc/openvpn3/VultrPi.conf --disconnect'
+alias vvpn3stat='openvpn3 sessions-list'
+alias vvpn3conf='openvpn3 configs-list'
+alias vvpn3rts='openvpn3 session-stats --session-path /net/openvpn/v3/configuration/6497c61fx8b38x4ff2x8508xff9af0cb41bd'
+#alias vvpn3auto='openvpn3-autoload --directory /etc/openvpn3/autoload/'
+alias vvpn3disable='sudo systemctl disable openvpn3-autoload.service'
+alias vvpn3enable='sudo systemctl enable openvpn3-autoload.service'
+alias vvpn3auto='sudo rm /etc/openvpn3/autoload/*.* && sudo cp /etc/openvpn3/autoload/off/VultrPi.autoload /etc/openvpn3/autoload/VultrPi.autoload && sudo cp /etc/openvpn3/autoload/off/VultrPi.conf /etc/openvpn3/autoload/VultrPi.conf && openvpn3-autoload --directory /etc/openvpn3/autoload/'
+alias mvpn3auto='sudo rm /etc/openvpn3/autoload/*.* && sudo cp /etc/openvpn3/autoload/off/mAWS-VPN-Pi.autoload /etc/openvpn3/autoload/mAWS-VPN-Pi.autoload && sudo cp /etc/openvpn3/autoload/off/mAWS-VPN-Pi.conf /etc/openvpn3/autoload/mAWS-VPN-Pi.conf && openvpn3-autoload --directory /etc/openvpn3/autoload/'
+alias vuvpn3auto='sudo rm /etc/openvpn3/autoload/*.* && sudo cp /etc/openvpn3/autoload/off/VultrPiUbuntu.autoload /etc/openvpn3/autoload/VultrPiUbuntu.autoload && sudo cp /etc/openvpn3/autoload/off/VultrPiUbuntu.conf /etc/openvpn3/autoload/VultrPiUbuntu.conf && openvpn3-autoload --directory /etc/openvpn3/autoload/'
+alias vuvpn3set='sudo rm /etc/openvpn3/autoload/*.* && sudo cp /etc/openvpn3/autoload/off/VultrPiUbuntu.autoload /etc/openvpn3/autoload/VultrPiUbuntu.autoload && sudo cp /etc/openvpn3/autoload/off/VultrPiUbuntu.conf /etc/openvpn3/autoload/VultrPiUbuntu.conf'
+alias vuvpn3enable='sudo systemctl enable openvpn3-autoload.service'
+alias vuvpn3disable='sudo systemctl disable openvpn3-autoload.service'
+
+##################################################
+######## PROGRAM SHORTCUTS - UNORGANIZED #########
+##################################################
+
+# Make "nano" show the line number when using it
+alias nano='nano -c'
+# Quick access to hosts file
+alias hosts='sudo nano -c /etc/hosts'
+# Quick access to hostname file
+alias hn='sudo nano -c /etc/hostname'
+# Quick access to /etc/fstab
+alias fstab='sudo nano -c /etc/fstab'
+
+# Quick access to sites enabled
+alias sabled='cd /etc/nginx/sites-enabled/'
+# Quick access to totemlife.xyz.conf in sites enabled
+alias etotem='sudo nano -c /etc/nginx/sites-enabled/totemlife.xyz.conf'
+# Quick access to shamigfrom212.xyz.conf in sites enabled
+alias eshamig='sudo nano -c /etc/nginx/sites-enabled/shamigfrom212.xyz.conf'
+# Quick access to danranda.com.conf in sites enabled
+alias edan='sudo nano -c /etc/nginx/sites-enabled/danranda.com.conf'
+# Test Nginx
+alias nt='sudo nginx -t'
+
+# Quick access to bash aliases
+alias ali='nano -c ~/.bash_aliases'
+# Uncomment below line to reload bash profile by typing "rl" in the terminal
+alias rl='source ~/.bash_aliases && echo "File .bash_aliases reloaded correctly" || echo "Syntax error, bash aliases not reloaded"'
+# Source ~/.bash_aliases file
+alias sali='source ~/.bash_aliases && echo "File bash_aliases has been reloaded correctly" || echo "Syntax error, the file bash_aliases could not be reloaded correctly"'
+# Quick access to reboot
+alias rb='sudo reboot;logout'
+# Quick access to shutdown
+alias sd='sudo shutdown -h now;logout'
+# SSHD_Config access
+alias sconf='sudo nano -c /etc/ssh/sshd_config'
+# Update and Full-Upgrade
+alias apup='sudo apt-get update && sudo apt full-upgrade && sudo apt-get clean'
+# Get my public ip address
+alias pubip='echo "Your Public IP address is..." && curl https://ipinfo.io/ip'
+# Get My public IP Address
+alias ipinfo='curl ipinfo.io/ip'
+# Internet Speed test
+alias st='speedtest-cli'
+# Openssl cryptographic benchmarks
+alias sslbench='openssl speed des des-ede3 dsa2048 hmac idea-cbc md5'
+# Ram Speed test with DD
+alias ramtest='cd ~/ && mkdir RAM_test && sudo mount tmpfs -t tmpfs RAM_test/ && cd RAM_test && dd if=/dev/zero of=data_tmp bs=1M count=512 && dd if=data_tmp of=/dev/null bs=1M count=512'
+# Edit the Perfect Forward Secrecy Configuration file
+alias pfs='sudo nano -c /etc/nginx/perfect-forward-secrecy.conf'
+
+# Check the nginx security headers for oddcake.net
+alias shcake='curl -IL https://oddcake.net/ && curl -IL http://oddcake.net/'
+# Check the nginx security headers for danran.rocks
+alias shdanran='curl -IL https://danran.rocks/ && curl -IL http://danran.rocks/'
+# Check the nginx security headers for mcmo.is
+alias shmo='curl -IL https://mcmo.is/ && curl -IL http://mcmo.is/'
+
+# Make "nano" show the line number when using it
+alias nano='nano -c'
+# Quick access to hosts file
+alias hosts='sudo nano -c /etc/hosts'
+# Quick access to hostname file
+alias hn='sudo nano -c /etc/hostname'
