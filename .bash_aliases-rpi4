@@ -4,6 +4,7 @@
 # However, if you want to uninstall this, you can read the readme file again, or run the following command below:
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
+###########################
 ######## SPF RECORDS ######
 ###########################
 
