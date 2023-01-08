@@ -190,8 +190,8 @@ alias fpmstat='sudo service php7.4-fpm status'
 # Check VultrWireguard server logs
 alias wgclog='sudo journalctl -eu wg-quick@wg-client0 && echo "Your wireguard client logs are here ^^^^^^^^ " || echo "Syntax error. We could not get the logs of your wireguard client. Check your syntax and try again."'
 # Check Wireguard client debug logs
-alias wgclog2-'sudo journalctl -kf \| grep wireguard'
-alias wgclog3='sudo dmesg -wH | grep wireguard'
+alias wgclog2-'sudo journalctl -kf "|" grep wireguard'
+alias wgclog3='sudo dmesg -wH "|" grep wireguard'
 # Start VultrWireguard Tunnel
 alias wgcstart='sudo systemctl start wg-quick@wg-client0.service && echo "sudo systemctl start wg-quick@wg-client0.service was successfully run. Wireguard Client Service is now running." || echo "Syntax error. We could not start the Wireguard client. Check your syntax and try again."'
 # Stop VultrWireguard Tunnel
@@ -210,8 +210,8 @@ alias wgcstat='sudo systemctl status wg-quick@wg-client0.service && echo "Here i
 # Check VultrWireguard server logs
 alias wgslog='sudo journalctl -eu wg-quick@wg0 && echo "Your wireguard server logs are here" || echo "Syntax error. We could not get the logs of your wireguard server. Check your syntax and try again."'
 # Check VultrWireguard server debug logs
-alias wgslog2-sudo journalctl -kf | grep wireguard
-alias wgslog3=sudo dmesg -wH | grep wireguard
+alias wgslog2-'sudo journalctl -kf "|" grep wireguard'
+alias wgslog3='sudo dmesg -wH "|" grep wireguard'
 # Start VultrWireguard Tunnel
 alias wgsstart='sudo systemctl start wg-quick@wg0.service && echo "sudo systemctl start wg-quick@wg0.service was successfully run. Wireguard Server Service is now running." || echo "Syntax error. We could not start the Wireguard Server. Check your syntax and try again."'
 # Stop VultrWireguard Tunnel
