@@ -34,7 +34,7 @@ cd $HOME/RP4-Ubuntu-Server-bash_aliases && git pull origin main
 ```
 ### Uninstall
 ```
-rm $HOME/.bash_aliases || sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
+rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 ```
 ## Please help!
 Please help me clean this file up and organize commands in a more practical manner. Feel free to fork this and make a contribution.
