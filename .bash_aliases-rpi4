@@ -825,7 +825,7 @@ alias sd='sudo shutdown -h now;logout'
 # SSHD_Config access
 alias sconf='sudo nano -c /etc/ssh/sshd_config'
 # Update and Full-Upgrade
-alias apup='sudo apt-get update && sudo apt full-upgrade && sudo apt-get clean'
+alias apup='sudo apt-get update && sudo apt full-upgrade && sudo apt-get autoremove && sudo apt-get clean'
 # Get my public ip address
 alias pubip='echo "Your Public IP address is..." && curl https://ipinfo.io/ip'
 # Get My public IP Address
