@@ -184,19 +184,43 @@ alias fpmstat='sudo service php7.4-fpm status'
 #alias aconf='sudo nano -c /etc/avahi/avahi-daemon.conf'
 
 ###########################
-######## WIREGUARD ########
+##### WIREGUARD CLIENT ####
+###########################
+# Check VultrWireguard server logs
+alias wgclog='sudo journalctl -eu wg-quick@wg-client0 && echo "Your wireguard client logs are here ^^^^^^^^ " || echo "Syntax error. We could not get the logs of your wireguard client. Check your syntax and try again."'
+# Check Wireguard client debug logs
+alias wgclog2-'sudo journalctl -kf | grep wireguard'
+alias wgclog3='sudo dmesg -wH | grep wireguard'
+# Start VultrWireguard Tunnel
+alias wgcstart='sudo systemctl start wg-quick@wg-client0.service && echo "sudo systemctl start wg-quick@wg-client0.service was successfully run. Wireguard Client Service is now running." || echo "Syntax error. We could not start the Wireguard client. Check your syntax and try again."'
+# Stop VultrWireguard Tunnel
+alias wgcstop='sudo systemctl stop wg-quick@wg-client0.service && echo "sudo systemctl stop wg-quick@wg-client0.service was successfully run. Wireguard Client Service has stopped running." || echo "Syntax error. We could not stop the Wireguard client. Check your syntax and try again."'
+# Enable VultrWireguard Tunnel on Boot
+alias wgcenable='sudo systemctl enable wg-quick@wg-client0.service && echo "sudo systemctl enable wg-quick@wg-client0.service was successfully run. Wireguard Client Service is now enabled at boot." || echo "Syntax error. We could disable the wireguard client on boot. Check your syntax and try again."'
+# Disable VultrWireguard Tunnel on Boot
+alias wgcdisable='sudo systemctl disable wg-quick@wg-client0.service && echo "sudo systemctl disable wg-quick@wg-client0.service was successfully run. Wireguard Client Service is now disabled on boot." || echo "Syntax error. We could not disable the wireguard client on boot. Please check your synta and try again."'
+# Get Status of VultrWireguard Tunnel
+alias wgcstat='sudo systemctl status wg-quick@wg-client0.service && echo "Here is the status of your Wireguard Client" || echo "Could not get the status of your Wireguard Client. Check your syntax and try again."'
+
+###########################
+#### WIREGUARD SERVER #####
 ###########################
 
+# Check VultrWireguard server logs
+alias wgslog='sudo journalctl -eu wg-quick@wg0 && echo "Your wireguard server logs are here ^^^^^^^^ " || echo "Syntax error. We could not get the logs of your wireguard server. Check your syntax and try again."'
+# Check VultrWireguard server debug logs
+alias wgslog2-'sudo journalctl -kf | grep wireguard'
+alias wgslog3='sudo dmesg -wH | grep wireguard'
 # Start VultrWireguard Tunnel
-alias wgstart='sudo systemctl start wg-quick@wg-client0.service && echo "sudo systemctl start wg-quick@wg-client0.service was successfully run. Wireguard Client Service is now running." || echo "Syntax error. We could not start the Wireguard client. Check your syntax and try again."'
+alias wgsstart='sudo systemctl start wg-quick@wg0.service && echo "sudo systemctl start wg-quick@wg0.service was successfully run. Wireguard Server Service is now running." || echo "Syntax error. We could not start the Wireguard Server. Check your syntax and try again."'
 # Stop VultrWireguard Tunnel
-alias wgstop='sudo systemctl stop wg-quick@wg-client0.service && echo "sudo systemctl stop wg-quick@wg-client0.service was successfully run. Wireguard Client Service has stopped running." || echo "Syntax error. We could not stop the Wireguard client. Check your syntax and try again."'
+alias wgsstop='sudo systemctl stop wg-quick@wg0.service && echo "sudo systemctl stop wg-quick@wg0.service was successfully run. Wireguard Server Service has stopped running." || echo "Syntax error. We could not stop the Wireguard Server. Check your syntax and try again."'
 # Enable VultrWireguard Tunnel on Boot
-alias wgenable='sudo systemctl enable wg-quick@wg-client0.service && echo "sudo systemctl enable wg-quick@wg-client0.service was successfully run. Wireguard Client Service is now enabled at boot." || echo "Syntax error. We could disable the wireguard client on boot. Check your syntax and try again."'
+alias wgsenable='sudo systemctl enable wg-quick@wg0.service && echo "sudo systemctl enable wg-quick@wg0.service was successfully run. Wireguard Server Service is now enabled at boot." || echo "Syntax error. We could disable the wireguard Server on boot. Check your syntax and try again."'
 # Disable VultrWireguard Tunnel on Boot
-alias wgdisable='sudo systemctl disable wg-quick@wg-client0.service && echo "sudo systemctl disable wg-quick@wg-client0.service was successfully run. Wireguard Client Service is now disabled on boot." || echo "Syntax error. We could not disable the wireguard client on boot. Please check your synta and try again."'
+alias wgsdisable='sudo systemctl disable wg-quick@wg0.service && echo "sudo systemctl disable wg-quick@wg0.service was successfully run. Wireguard Server Service is now disabled on boot." || echo "Syntax error. We could not disable the wireguard Server on boot. Please check your synta and try again."'
 # Get Status of VultrWireguard Tunnel
-alias wgstat='sudo systemctl status wg-quick@wg-client0.service && echo "Here is the status of your Wireguard Client" || echo "Could not get the status of your Wireguard Client. Check your syntax and try again."'
+alias wgsstat='sudo systemctl status wg-quick@wg0.service && echo "Here is the status of your Wireguard Server" || echo "Could not get the status of your Wireguard Server. Check your syntax and try again."'
 
 ###########################
 ########## DISKS ##########
