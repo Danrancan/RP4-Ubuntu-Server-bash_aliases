@@ -28,6 +28,10 @@ all of this with the one liner command below...
 ```
 cp $HOME/.bash_aliases $HOME/.bash_aliases.orig || cd $HOME/ && git clone https://github.com/Danrancan/RP4-Ubuntu-Server-bash_aliases.git && ln -nsf $HOME/RP4-Ubuntu-Server-bash_aliases/.bash_aliases-rpi4 $HOME/.bash_aliases && source $HOME/.bash_aliases
 ```
+### Update
+```
+cd $HOME/RP4-Ubuntu-Server-bash_aliases && git pull origin main
+```
 ### Uninstall
 ```
 rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
