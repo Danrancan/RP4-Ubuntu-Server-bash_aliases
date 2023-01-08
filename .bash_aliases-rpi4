@@ -5,6 +5,15 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ###########################
+######### Hardening #######
+###########################
+
+# Secure root account by locking root, then disabling root entirely by scrambling its password with usermod.
+alias rootsecure='sudo usermod -L root && sudo usermod -p "'!'"'
+# Regain the root account by unlocking root account and then by resetting/re-enabling the root password
+alias rootgain='sudo usermod -U root && sudo passwd root'
+
+###########################
 ######## SPF RECORDS ######
 ###########################
 
