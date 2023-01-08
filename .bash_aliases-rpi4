@@ -8,10 +8,12 @@
 ######### Hardening #######
 ###########################
 
-# Secure root account by locking root, then disabling root entirely by scrambling its password with usermod.
-alias rootsecure='sudo usermod -L root && sudo usermod -p "'!'"'
-# Regain the root account by unlocking root account and then by resetting/re-enabling the root password
-alias rootgain='sudo usermod -U root && sudo passwd root'
+# Secure by locking root
+alias rootlock='sudo usermod -L root'
+# Secure root by scrambling the password disabling it back to stock settings.
+alias rootblock="sudo usermod -p '!'"
+# Enable a blocked root account be recreating a password
+alias rootgain='sudo usermod -p root'
 
 ###########################
 ######## SPF RECORDS ######
