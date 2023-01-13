@@ -52,6 +52,13 @@ alias sawl='sudo nano /etc/spamassassin/local.cf'
 alias sacheck='sudo spamassassin --lint'
 
 ###########################
+########### PHP ###########
+###########################
+
+alias phptestconf="php -e -c /etc/php/7.4/fpm/php.ini -r 'echo "PHP7.4-ini config is OK\n";';"
+alias php8testconf="php -e -c /etc/php/8.1/fpm/php.ini -r 'echo "PHP8.1-ini config is OK\n";';"
+
+###########################
 ######### OPENDKIM ########
 ###########################
 
