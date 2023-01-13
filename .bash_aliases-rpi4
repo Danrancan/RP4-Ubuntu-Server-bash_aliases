@@ -11,7 +11,7 @@
 # Secure by locking root
 alias rootlock='sudo usermod -L root'
 # Secure root by scrambling the password disabling it back to stock settings.
-alias rootblock="sudo usermod -p '!'"
+alias rootblock="sudo usermod -p '!' root"
 # Enable a blocked root account be recreating a password
 alias rootgain='sudo usermod -p root'
 
