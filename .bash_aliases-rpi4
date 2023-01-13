@@ -5,15 +5,25 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ###########################
-######### Hardening #######
+########### ROOT ##########
 ###########################
 
-# Secure by locking root
-alias rootlock='sudo usermod -L root'
-# Secure root by scrambling the password disabling it back to stock settings.
-alias rootblock="sudo usermod -p '!' root"
-# Enable a blocked root account be recreating a password
-alias rootgain='sudo usermod -p root'
+# Get lock status of root account
+alias rootstat='sudo passwd -S root'
+# Password LOCK ROOT account using usermod
+alias rootlock='sudo usermod -L root && sudo passwd -S root'
+# Password LOCK ROOT account using passwd
+alias rootlock2='sudo passwd -l root && sudo passwd -S root'
+# Password UNLOCK ROOT account using usermod
+alias rootunlock='sudo usermod -U root && sudo passwd -S root'
+# Password UNLOCK ROOT account using passwd
+alias rootunlock2='sudo passwd -u root && sudo passwd -S root'
+# DISABLE ROOT account using usermod
+alias rootdisable="sudo usermod -P '!' root && sudo passwd -S root"
+# DISABLE ROOT account using passwd
+alias rootdisable2='sudo passwd -dl root && sudo passwd -S root'
+# ENABLE ROOT account using passwd
+alias rootenable='sudo passwd root && sudo passwd -S root'
 
 ###########################
 ######## SPF RECORDS ######
