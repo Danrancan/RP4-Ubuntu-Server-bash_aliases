@@ -11,6 +11,10 @@
 # Search for and reveal what configurationfiles are using your old/static/unchangeable hostname on the raspberry pi 4
 # grep -r old_hostname / 2>/dev/null
 
+# Search folder recursively for all files with a specific string in a filename
+# grep -r -l "filename-string-to-search" /path/to/search/*
+# EX: sudo grep -r -l "DS_Store" /*
+
 ###########################
 ########### ROOT ##########
 ###########################
