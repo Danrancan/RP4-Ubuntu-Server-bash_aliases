@@ -4,6 +4,15 @@
 # However, if you want to uninstall this, you can read the readme file again, or run the following command below:
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
+###########################
+## Raspberry Pi Hardware ##
+###########################
+
+# Enable Wi-Fi on Raspberry Pi 4
+alias wifion='sudo rfkill unblock wifi && echo "Your wifi (wlan0) has been enabled with rfkill." || echo "Your wifi (wlan0) could not be enabled with rfkill."'
+# Disable Wi-Fi on Raspberry Pi 4
+alias wifion='sudo rfkill block wifi && echo "Your wifi (wlan0) has been disbled with rfkill." || echo "Your wifi (wlan0) could not be disabled with rfkill."'
+
 ############################
 # USEFUL COMMANDS NO ALIAS #
 ############################
