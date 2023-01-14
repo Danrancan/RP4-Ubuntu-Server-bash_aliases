@@ -4,6 +4,13 @@
 # However, if you want to uninstall this, you can read the readme file again, or run the following command below:
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
+############################
+# USEFUL COMMANDS NO ALIAS #
+############################
+
+# Search for and reveal what configurationfiles are using your old/static/unchangeable hostname on the raspberry pi 4
+# grep -r old_hostname / 2>/dev/null
+
 ###########################
 ########### ROOT ##########
 ###########################
