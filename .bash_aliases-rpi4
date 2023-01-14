@@ -89,6 +89,12 @@ alias sacheck='sudo spamassassin --lint'
 ########### PHP ###########
 ###########################
 
+###########################
+######### NEXTCLOUD #######
+###########################
+
+# Shorten nexcloud's cli "occ" command to just "occ"
+alias occ='sudo -u www-data php occ'
 
 ###########################
 ######### OPENDKIM ########
