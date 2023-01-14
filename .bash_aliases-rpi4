@@ -13,7 +13,7 @@
 
 # Search folder recursively for all files with a specific string in a filename
 # grep -r -l "filename-string-to-search" /path/to/search/*
-# EX: sudo grep -r -l "DS_Store" /*
+# EX: sudo grep -r -l ".Spotlight-V100" /*
 
 # Find out what processes are using what port (ex: port 80)
 # EX-port80: netstat -tulpn | grep --color :80
