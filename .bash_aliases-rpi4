@@ -11,7 +11,7 @@
 # Enable Wi-Fi on Raspberry Pi 4
 alias wifion='sudo rfkill unblock wifi && echo "Your wifi (wlan0) has been enabled with rfkill." || echo "Your wifi (wlan0) could not be enabled with rfkill."'
 # Disable Wi-Fi on Raspberry Pi 4
-alias wifion='sudo rfkill block wifi && echo "Your wifi (wlan0) has been disbled with rfkill." || echo "Your wifi (wlan0) could not be disabled with rfkill."'
+alias wifioff='sudo rfkill block wifi && echo "Your wifi (wlan0) has been disbled with rfkill." || echo "Your wifi (wlan0) could not be disabled with rfkill."'
 
 ############################
 # USEFUL COMMANDS NO ALIAS #
