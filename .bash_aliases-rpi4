@@ -15,6 +15,10 @@
 # grep -r -l "filename-string-to-search" /path/to/search/*
 # EX: sudo grep -r -l "DS_Store" /*
 
+# Find out what processes are using what port (ex: port 80)
+# EX-port80: netstat -tulpn | grep --color :80
+# EX-port443: netstat -tulpn | grep --color :443
+
 ###########################
 ########### ROOT ##########
 ###########################
