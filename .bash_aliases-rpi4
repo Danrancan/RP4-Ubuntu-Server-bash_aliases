@@ -8,9 +8,11 @@
 ## Raspberry Pi Hardware ##
 ###########################
 
-# Enable Wi-Fi on Raspberry Pi 4
+# Check the "blocked/unblocked" status of network (Wi-Fi) interfaces with rfkill
+alias wifistat='rfkill'
+# Enable Wi-Fi on Raspberry Pi 4 with rfkill's software unblock (soft block)
 alias wifion='sudo rfkill unblock wifi && echo "Your wifi (wlan0) has been enabled with rfkill." || echo "Your wifi (wlan0) could not be enabled with rfkill."'
-# Disable Wi-Fi on Raspberry Pi 4
+# Disable Wi-Fi on Raspberry Pi 4 with rfkill's software block (soft block)
 alias wifioff='sudo rfkill block wifi && echo "Your wifi (wlan0) has been disbled with rfkill." || echo "Your wifi (wlan0) could not be disabled with rfkill."'
 
 ############################
