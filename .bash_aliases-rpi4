@@ -31,6 +31,13 @@ alias wifioff='sudo rfkill block wifi && echo "Your wifi (wlan0) has been disble
 # EX-port443: netstat -tulpn | grep --color :443
 
 ###########################
+######### SYSTEMCTL #######
+###########################
+
+# List all currently running services
+alias serviceslist='systemctl --type=service'
+
+###########################
 ########### ROOT ##########
 ###########################
 
