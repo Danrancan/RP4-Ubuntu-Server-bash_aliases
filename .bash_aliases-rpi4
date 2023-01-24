@@ -31,6 +31,21 @@ alias wifioff='sudo rfkill block wifi && echo "Your wifi (wlan0) has been disble
 # EX-port443: netstat -tulpn | grep --color :443
 
 ###########################
+######### UNBOUND #########
+###########################
+
+# Enable unbound DNS resolver
+alias uenable='sudo systemctl enable unbound.service && echo "Unbound DNS has been enabled." || echo "Unbound DNS could not be enabled. Check your syntax and try again."'
+# Disable unbound DNS resolver
+alias udisable='sudo systemctl enable unbound.service && echo "Unbound DNS has been disabled." || echo "Unbound DNS could not be disabled. Check your syntax and try again."'
+# Start unbound DNS resolver
+alias ustart='sudo systemctl start unbound.service && echo "Unbound DNS has been started." || echo "Unbound DNS could not start. Check your syntax and try again."'
+# Stop unbound DNS resolver
+alias ustop='sudo systemctl stop unbound.service && echo "Unbound DNS has been stopped." || echo "Unbound DNS could not stop. Check your syntax and try again."'
+# Restart unbound DNS resolver
+alias url='sudo systemctl restart unbound.service && echo "Unbound DNS has been restarted." || echo "Unbound DNS could not be restarted. Is it running?"'
+
+###########################
 ######### SYSTEMCTL #######
 ###########################
 
