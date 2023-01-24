@@ -46,6 +46,22 @@ alias ustop='sudo systemctl stop unbound.service && echo "Unbound DNS has been s
 alias url='sudo systemctl restart unbound.service && echo "Unbound DNS has been restarted." || echo "Unbound DNS could not be restarted. Is it running?"'
 
 ###########################
+##### SYSTEMD-RESOLVED ####
+###########################
+
+# Enable systemd-resolved
+alias sdrenable='sudo systemctl enable systemd-resolved --now && echo "systemd-resolved has been enabled." || echo "systemd-resolved could not be enabled. Check your syntax and try again."'
+# Disable systemd-resolved
+alias sdrdisable='sudo systemctl disable systemd-resolved --now && echo "systemd-resolved has been disabled." || echo "systemd-resolved could not be disabled. Check your syntax and try again."'
+# Start systemd-resolved
+alias sdrstart='sudo systemctl start systemd-resolved --now && echo "systemd-resolved has been started." || echo "systemd-resolved could not start. Check your syntax and try again."'
+# Stop systemd-resolved
+alias sdrstop='sudo systemctl stop systemd-resolved --now && echo "systemd-resolved has been stopped." || echo "systemd-resolved could not stop. Check your syntax and try again."'
+# Restart systemd-resolved
+alias sdrrl='sudo systemctl restart systemd-resolved --now && echo "systemd-resolved has been restarted." || echo "systemd-resolved could not be restarted. Is it running?"'
+
+
+###########################
 ######### SYSTEMCTL #######
 ###########################
 
