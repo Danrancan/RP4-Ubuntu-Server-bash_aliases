@@ -364,6 +364,9 @@ alias wpsdanrantt='wpscan --url https://danran.rocks --enumerate tt'
 alias wp='sudo -u www-data wp'
 alias wpcliupdate='sudo chown $USER:$USER /usr/local/bin/wp && sudo wp cli update && sudo chown www-data:www-data /usr/local/bin/wp'
 
+# Regenerate missing thumbnails using wordpress cli
+alias wpcliregen='wp media regenerate --only-missing'
+
 ###########################
 ########### UFW ###########
 ###########################
