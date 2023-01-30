@@ -167,6 +167,12 @@ alias ndstat='sudo service netdata status'
 alias ndrl='sudo service netdata restart'
 
 ###########################
+######### DOVECOT #########
+###########################
+# List available password schemes (dpsl=dove,password,schemes,list)
+alias dpsl='sudo doveadm pw -l && echo "These are the available password shemes in dovecot." || echo "We could not get available password shemes in dovecot. Check your syntax and try again."'
+
+###########################
 ########### DNS ###########
 ###########################
 
