@@ -448,27 +448,37 @@ alias gzdanran='curl -IL https://danran.rocks -H "Accept-Encoding: gzip"'
 
 # Restart fail2ban
 alias f2brl='sudo systemctl restart fail2ban && echo "fail2ban was restarted" || echo "fail2ban could NOT RESTART. Check your syntax."'
+
 # Start fail2ban
 alias f2bstart='sudo systemctl start fail2ban && echo "fail2ban was started" || echo "fail2ban could NOT START. Check your syntax."'
+
 # Stop fail2ban
 alias f2bstop='sudo systemctl start fail2ban && echo "fail2ban was stopped" || echo "fail2ban could NOT STOP. Check your syntax."'
+
 # Check client jails of fail2ban
 alias f2bjails='sudo fail2ban-client status && echo "Fail2ban is running these jails" || echo "Fail2ban couldn NOT check which jails are running. Is fail2ban broken?"'
+
 # Check client sshd jail of fail2ban
 alias f2bsshdstat='sudo fail2ban-client status sshd && echo "The status of the SSHD jail is..." || echo "The state of the SSHD Jail could not be read. Is fail2ban working?"'
+
 # Check all banned IP's in fail2ban
 alias f2bbanned='sudo zgrep "Ban" /var/log/fail2ban.log* && echo "Fail2ban has banned the following ip addresses..." || echo "Fail2ban could not check the banned IP addresses. Is fail2ban working?"'
 alias f2bbanned2='sudo iptables -L && echo "Here are the iptables. Notice the banned fail2ban IPs." || echo "We could not get the fail2ban iptables. Check your syntax."'
+
 # Unban all IP's banned by fail2ban
-alias unbanall='sudo fail2ban-client unban --all && echo "Success! All fail2ban IPs have been unbanned" || echo "Fail2ban couldn not unban any clients. Check your syntax."'
+alias f2bunbanall='sudo fail2ban-client unban --all && echo "Success! All fail2ban IPs have been unbanned" || echo "Fail2ban couldn not unban any clients. Check your syntax."'
+
 # Quick access to fail2bans jail.local config file
-alias f2bjconf='sudo nano -c /etc/fail2ban/jail.local'
-# Show fail2ban logs
-alias catf2ban='sudo cat /var/log/fail2ban.log'
-# Show tail -f logs of fail2ban
-alias tailf2ban='sudo tail -f /var/log/fail2ban.log'
+alias f2bjaillocal='sudo nano -c /etc/fail2ban/jail.local'
+
+# Show fail2ban logs with cat command
+alias f2blogcat='sudo cat /var/log/fail2ban.log'
+
+# Recursively show fail2ban logs with "tail -f /var/log/fail2ban.log" command.
+alias f2blogtail='sudo tail -f /var/log/fail2ban.log'
+
 # Show fail2ban logs with tail (omit the -f flag)
-alias f2blogs='sudo tail /var/log/fail2ban.log'
+alias f2blogtail2='sudo tail /var/log/fail2ban.log'
 
 ###########################
 ######### DOVECOT #########
