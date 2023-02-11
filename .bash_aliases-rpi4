@@ -472,7 +472,7 @@ alias f2bunbanall='sudo fail2ban-client unban --all && echo "Success! All fail2b
 alias f2bjaillocal='sudo nano -c /etc/fail2ban/jail.local'
 
 # Show fail2ban logs with cat command
-alias f2blogcat='sudo cat /var/log/fail2ban.log'
+alias f2blogs='sudo cat /var/log/fail2ban.log'
 
 # Recursively show fail2ban logs with "tail -f /var/log/fail2ban.log" command.
 alias f2blogtail='sudo tail -f /var/log/fail2ban.log'
