@@ -108,6 +108,14 @@ alias rootenable='sudo passwd root && sudo passwd -S root'
 alias mwl='sudo nano /etc/postfix/rbl_override /etc/spamassassin/local.cf /etc/postgrey/whitelist_clients ; sudo postmap /etc/postfix/rbl_override'
 # Open "Mail IP Whitelists" files to add IP addresses to mail whitelists
 alias mwlip='sudo nano /etc/postfix/postscreen_access.cidr'
+# Mail test TLSv1
+alias mtls1='openssl s_client -starttls smtp -crlf -connect localhost:587 -tls1'
+# Mail test TLSv1.1
+alias mtls1.1='openssl s_client -starttls smtp -crlf -connect localhost:587 -tls1_1'
+# Mail test TLSv1.2
+alias mtls1.2='openssl s_client -starttls smtp -crlf -connect localhost:587 -tls1_2'
+# Mail test TLSv1.3
+alias mtls1.3='openssl s_client -starttls smtp -crlf -connect localhost:587 -tls1_3'
 
 ###########################
 ######## SPF RECORDS ######
