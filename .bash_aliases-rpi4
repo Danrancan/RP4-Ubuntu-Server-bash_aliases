@@ -5,6 +5,13 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ###########################
+###### .bash_aliases ######
+###########################
+
+# Update your bash aliases file with this repo already installed
+alias baud='/usr/bin/git -C $HOME/RP4-Ubuntu-Server-bash_aliases pull origin main && source $HOME/.bash_aliases'
+
+###########################
 ## Raspberry Pi Hardware ##
 ###########################
 
