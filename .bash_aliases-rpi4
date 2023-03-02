@@ -97,8 +97,8 @@ alias rootenable='sudo passwd root && sudo passwd -S root'
 ########### MAIL ##########
 ###########################
 
-# Open "Mail Whitelists" files to add to whitelists (ignore postscreen whitelists and blacklists)
-alias mwl='sudo nano /etc/postfix/rbl_override /etc/spamassassin/local.cf /etc/postgrey/whitelist_clients'
+# Open "Mail Whitelists" files to add to whitelists (ignore postscreen whitelists and blacklists). Then rebuild the postmap override whitelist database.
+alias mwl='sudo nano /etc/postfix/rbl_override /etc/spamassassin/local.cf /etc/postgrey/whitelist_clients ; sudo postmap /etc/postfix/rbl_override'
 # Open "Mail IP Whitelists" files to add IP addresses to mail whitelists
 alias mwlip='sudo nano /etc/postfix/postscreen_access.cidr'
 
