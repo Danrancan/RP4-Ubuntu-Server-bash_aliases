@@ -38,6 +38,13 @@ alias wifioff='sudo rfkill block wifi && echo "Your wifi (wlan0) has been disble
 # EX-port443: netstat -tulpn | grep --color :443
 
 ###########################
+######### NEXTCLOUD #######
+###########################
+
+# Run the occ command as www-data php
+alias occ='sudo -u www-data php occ'
+
+###########################
 ######### UNBOUND #########
 ###########################
 
