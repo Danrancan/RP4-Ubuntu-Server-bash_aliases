@@ -454,20 +454,35 @@ alias shutdownlog='last -x shutdown'
 alias shutdownlog2='last -5 shutdown $USER'
 
 ###########################
-########## TESTS ##########
+##### Nginx Pagespeed #####
+###########################
+# Test pagespeed
+alias pscake='curl -I -p https://www.oddcake.net'
+alias psmo='curl -I -p https://www.mcmo.is'
+alias psdanran='curl -I -p https://www.danran.rocks'
+
+# Flush pagespeed cache
+alias psflush='sudo touch /usr/share/nginx/ngx_pagespeed_cache/cache.flush'
+
+###########################
+###### Nginx Fastcgi ######
 ###########################
 # Test fastcgi
 alias fcgicake='curl -I https://www.oddcake.net'
 alias fcgimo='curl -I https://www.mcmo.is'
 alias fcgidanran='curl -I https://www.danran.rocks'
-# Test pagespeed
-alias pscake='curl -I -p https://www.oddcake.net'
-alias psmo='curl -I -p https://www.mcmo.is'
-alias psdanran='curl -I -p https://www.danran.rocks'
+
+###########################
+###### Nginx Brotli #######
+###########################
 # Test Brotli Compression
 alias brmo='curl -IL https://mcmo.is -H "Accept-Encoding: br"'
 alias brcake='curl -IL https://oddcake.net -H "Accept-Encoding: br"'
 alias brdanran='curl -IL https://danran.rocks -H "Accept-Encoding: br"'
+
+###########################
+###### Nginx Gzip #######
+###########################
 # Test Gzip Compression
 alias gzmo='curl -IL https://mcmo.is -H "Accept-Encoding: gzip"'
 alias gzcake='curl -IL https://oddcake.net -H "Accept-Encoding: gzip"'
