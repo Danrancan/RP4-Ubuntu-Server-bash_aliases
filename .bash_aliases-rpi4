@@ -461,7 +461,7 @@ alias pscake='curl -I -p https://www.oddcake.net'
 alias psmo='curl -I -p https://www.mcmo.is'
 alias psdanran='curl -I -p https://www.danran.rocks'
 
-# Flush pagespeed cache
+# Flush/Purge pagespeed cache
 alias psflush='sudo touch /usr/share/nginx/ngx_pagespeed_cache/cache.flush'
 
 ###########################
@@ -471,6 +471,18 @@ alias psflush='sudo touch /usr/share/nginx/ngx_pagespeed_cache/cache.flush'
 alias fcgicake='curl -I https://www.oddcake.net'
 alias fcgimo='curl -I https://www.mcmo.is'
 alias fcgidanran='curl -I https://www.danran.rocks'
+
+# Flush/Purge All Fastcgi Cache
+alias fcgiflushall='sudo rm -Rf /usr/share/nginx/danran.rocks_fastcgi_cache/*; sudo rm -Rf /usr/share/nginx/oddcake.net_fastcgi_cache/*; sudo rm -Rf /usr/share/nginx/mcmo.is_fastcgi_cache/*'
+
+# Flush/Purge danran.rocks Fastcgi Cache
+alias fcgiflushdanran='sudo rm -Rf /usr/share/nginx/danran.rocks_fastcgi_cache/*'
+
+# Flush/Purge oddcake.net Fastcgi Cache
+alias fcgiflushcake='sudo rm -Rf /usr/share/nginx/oddcake.net_fastcgi_cache/*'
+
+# Flush/Purge mcmo.is Fastcgi Cache
+alias fcgiflushmo='sudo rm -Rf /usr/share/nginx/mcmo.is_fastcgi_cache/*'
 
 ###########################
 ###### Nginx Brotli #######
