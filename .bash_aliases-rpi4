@@ -374,31 +374,31 @@ alias blkid='sudo blkid'
 ##############################################
 
 # wpscan update
-alias wpsupdate='wpscan --update'
+alias wpsupdate='sudo wpscan --update'
 # Scan Installed Plugins
-alias wpscakep='wpscan --url https://oddcake.net --enumerate p'
-alias wpsmop='wpscan --url https://mcmo.is --enumerate p'
-alias wpsdanranp='wpscan --url https://danran.rocks --enumerate p'
+alias wpscakeplugins='sudo wpscan --url https://oddcake.net --enumerate p'
+alias wpsmoplugins='sudo wpscan --url https://mcmo.is --enumerate p'
+alias wpsdanranplugins='sudo wpscan --url https://danran.rocks --enumerate p'
 # Scan vulnerable plugins
-alias wpscakevp='wpscan --url https://oddcake.net --enumerate vp'
-alias wpsmovp='wpscan --url https://mcmo.is --enumerate vp'
-alias wpsdanranvp='wpscan --url https://danran.rocks --enumerate vp'
+alias wpscakevvplugins='sudo wpscan --url https://oddcake.net --enumerate vp'
+alias wpsmovplugins='sudo wpscan --url https://mcmo.is --enumerate vp'
+alias wpsdanranvplugins='sudo wpscan --url https://danran.rocks --enumerate vp'
 # Scan Installed Themes
-alias wpscaket='wpscan --url https://oddcake.net --enumerate t'
-alias wpsmot='wpscan --url https://mcmo.is --enumerate t'
-alias wpsdanrant='wpscan --url https://danran.rocks --enumerate t'
+alias wpscakethemes='sudo wpscan --url https://oddcake.net --enumerate t'
+alias wpsmotthemes='sudo wpscan --url https://mcmo.is --enumerate t'
+alias wpsdanranthemes='sudo wpscan --url https://danran.rocks --enumerate t'
 # Scan vulnerable themes
-alias wpscakevt='wpscan --url https://oddcake.net --enumerate vt'
-alias wpsmovt='wpscan --url https://mcmo.is --enumerate vt'
-alias wpsdanranvt='wpscan --url https://danran.rocks --enumerate vt'
+alias wpscakevtthemes='sudo wpscan --url https://oddcake.net --enumerate vt'
+alias wpsmovthemes='sudo wpscan --url https://mcmo.is --enumerate vt'
+alias wpsdanranvthemes='sudo wpscan --url https://danran.rocks --enumerate vt'
 # Scan user accounts
-alias wpscakeu='wpscan --url https://oddcake.net --enumerate u'
-alias wpsmou='wpscan --url https://mcmo.is --enumerate u'
-alias wpsdanranu='wpscan --url https://danran.rocks --enumerate u'
+alias wpscakeusers='sudo wpscan --url https://oddcake.net --enumerate u'
+alias wpsmousers='sudo wpscan --url https://mcmo.is --enumerate u'
+alias wpsdanranusers='sudo wpscan --url https://danran.rocks --enumerate u'
 # Scan vulnerable timthumb files
-alias wpscakett='wpscan --url https://oddcake.net --enumerate tt'
-alias wpsmott='wpscan --url https://mcmo.is --enumerate tt'
-alias wpsdanrantt='wpscan --url https://danran.rocks --enumerate tt'
+alias wpscakett='sudo wpscan --url https://oddcake.net --enumerate tt'
+alias wpsmott='sudo wpscan --url https://mcmo.is --enumerate tt'
+alias wpsdanrantt='sudo wpscan --url https://danran.rocks --enumerate tt'
 
 ###########################
 ###### WORDPRESS CLI ######
