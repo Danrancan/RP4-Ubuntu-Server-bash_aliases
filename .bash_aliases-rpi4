@@ -85,6 +85,12 @@ alias sdrstop='sudo systemctl stop systemd-resolved --now && echo "systemd-resol
 # Restart systemd-resolved
 alias sdrrl='sudo systemctl restart systemd-resolved --now && echo "systemd-resolved has been restarted." || echo "systemd-resolved could not be restarted. Is it running?"'
 
+###########################
+####### LOG ROTATE ########
+###########################
+
+# Test the logrotate config file by doing a dry run. lrtest stands for log-rotate-test.
+alias lrtest='sudo logrotate /etc/logrotate.conf --debug'
 
 ###########################
 ######### SYSTEMCTL #######
