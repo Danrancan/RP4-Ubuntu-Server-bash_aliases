@@ -86,6 +86,146 @@ alias sdrstop='sudo systemctl stop systemd-resolved --now && echo "systemd-resol
 alias sdrrl='sudo systemctl restart systemd-resolved --now && echo "systemd-resolved has been restarted." || echo "systemd-resolved could not be restarted. Is it running?"'
 
 ###########################
+## GENERAL LOG CHECKING ###
+###########################
+
+# AUTH
+alias catauthlog='sudo cat /var/log/auth.log'
+alias catkernlog='sudo cat /var/log/kern.log'
+
+# MAIL
+alias catmaillog='sudo cat /var/log/mail.log'
+alias catmailerrlog='sudo cat /var/log/mail.err'
+
+# MODSECURITY
+alias catmodseclog='sudo cat /var/log/modsec_audit.log'
+alias catmodseclog2='sudo cat /var/log/modsec_audit.log.1'
+
+# PHP-FMP
+alias catfpmlog='sudo cat /var/log/php7.4-fpm.log'
+alias catfpmslowlog='sudo cat /var/log/php-fpm/slow.log'
+
+# SYSLOG
+alias catsyslog='sudo cat /var/log/syslog'
+
+# WIREGUARD VPN
+alias catvpnlog='sudo cat /var/log/vpn_checking.log'
+
+# FAIL2BAN
+alias catf2blog='sudo cat /var/log/fail2ban.log'
+
+# AMPLIFY
+alias catamplifylog='sudo cat /var/log/amplify-agent/agent.log'
+
+# CLAMAV
+alias catclamavlog='sudo cat /var/log/clamav/clamav.log'
+
+# DOVECOT
+alias catdovecotlog='sudo cat /var/log/dovecot/dovecot.debug'
+alias catdovecoterrlog='sudo cat /var/log/dovecot/dovecot.err'
+
+# LETSENCRYPT
+alias catletsencryptlog='sudo cat /var/log/letsencrypt/letsencrypt.log'
+
+# MYSQL
+alias catmysqllog='sudo cat /var/log/mysql/error.log'
+alias catmysqlslowlog='sudo cat /var/log/mysql/mariadb-slow.log'
+
+# NETDATA
+alias catnetdataaccesslog='sudo cat /var/log/netdata/access.log'
+alias catnetdataerrlog='sudo cat /var/log/netdata/error.log'
+alias catnetdatacollectorlog='sudo cat /var/log/netdata/collector.log'
+alias catnetdatahealthlog='sudo cat /var/log/netdata/health.log'
+
+# NGINX
+alias catnginxaccesslog='sudo cat /var/log/nginx/access.log'
+alias catnginxerrlog='sudo cat /var/log/nginx/error.log'
+alias catnginxdanranlog='sudo cat /var/log/nginx/danran.rocks.error.log'
+alias catnginxcakelog='sudo cat /var/log/nginx/oddcake.net.error.log'
+alias catnginxmolog='sudo cat /var/log/nginx/mcmo.is.error.log'
+alias catnginxmolog='sudo cat /var/log/nginx/mcmo.is.error.log'
+alias catnginxpmalog='sudo cat /var/log/nginx/phpmyadmin.error.log'
+alias catnginxwebminlog='sudo cat /var/log/nginx/webmin.error.log'
+
+# REDIS
+alias catredislog='sudo cat /var/log/redis/redis-server.log'
+
+# WORDPRESS
+alias catwpmo='sudo cat /var/log/wordpress/mcmo.is.error.log'
+alias catwpcake='sudo cat /var/log/wordpress/oddcake.net.error.log'
+alias catwpdanran='sudo cat /var/log/wordpress/danran.rocks.error.log'
+
+###########################
+# REAL-TIME LOG CHECKING ##
+###########################
+
+# AUTH
+alias tailauthlog='sudo tail -f /var/log/auth.log'
+alias tailkernlog='sudo tail -f /var/log/kern.log'
+
+# MAIL
+alias tailmaillog='sudo tail -f /var/log/mail.log'
+alias tailmailerrlog='sudo tail -f /var/log/mail.err'
+
+# MODSECURITY
+alias tailmodseclog='sudo tail -f /var/log/modsec_audit.log'
+alias tailmodseclog2='sudo tail -f /var/log/modsec_audit.log.1'
+
+# PHP-FMP
+alias tailfpmlog='sudo tail -f /var/log/php7.4-fpm.log'
+alias tailfpmslowlog='sudo tail -f /var/log/php-fpm/slow.log'
+
+# SYSLOG
+alias tailsyslog='sudo tail -f /var/log/syslog'
+
+# WIREGUARD VPN
+alias tailvpnlog='sudo tail -f /var/log/vpn_checking.log'
+
+# FAIL2BAN
+alias tailf2blog='sudo tail -f /var/log/fail2ban.log'
+
+# AMPLIFY
+alias tailamplifylog='sudo tail -f /var/log/amplify-agent/agent.log'
+
+# CLAMAV
+alias tailclamavlog='sudo tail -f /var/log/clamav/clamav.log'
+
+# DOVECOT
+alias taildovecotlog='sudo tail -f /var/log/dovecot/dovecot.debug'
+alias taildovecoterrlog='sudo tail -f /var/log/dovecot/dovecot.err'
+
+# LETSENCRYPT
+alias tailletsencryptlog='sudo tail -f /var/log/letsencrypt/letsencrypt.log'
+
+# MYSQL
+alias tailmysqllog='sudo tail -f /var/log/mysql/error.log'
+alias tailmysqlslowlog='sudo tail -f /var/log/mysql/mariadb-slow.log'
+
+# NETDATA
+alias tailnetdataaccesslog='sudo tail -f /var/log/netdata/access.log'
+alias tailnetdataerrlog='sudo tail -f /var/log/netdata/error.log'
+alias tailnetdatacollectorlog='sudo tail -f /var/log/netdata/collector.log'
+alias tailnetdatahealthlog='sudo tail -f /var/log/netdata/health.log'
+
+# NGINX
+alias tailnginxaccesslog='sudo tail -f /var/log/nginx/access.log'
+alias tailnginxerrlog='sudo tail -f /var/log/nginx/error.log'
+alias tailnginxdanranlog='sudo tail -f /var/log/nginx/danran.rocks.error.log'
+alias tailnginxcakelog='sudo tail -f /var/log/nginx/oddcake.net.error.log'
+alias tailnginxmolog='sudo tail -f /var/log/nginx/mcmo.is.error.log'
+alias tailnginxmolog='sudo tail -f /var/log/nginx/mcmo.is.error.log'
+alias tailnginxpmalog='sudo tail -f /var/log/nginx/phpmyadmin.error.log'
+alias tailnginxwebminlog='sudo tail -f /var/log/nginx/webmin.error.log'
+
+# REDIS
+alias tailredislog='sudo tail -f /var/log/redis/redis-server.log'
+
+# WORDPRESS
+alias tailwpmo='sudo tail -f /var/log/wordpress/mcmo.is.error.log'
+alias tailwpcake='sudo tail -f /var/log/wordpress/oddcake.net.error.log'
+alias tailwpdanran='sudo tail -f /var/log/wordpress/danran.rocks.error.log'
+
+###########################
 ####### LOG ROTATE ########
 ###########################
 
