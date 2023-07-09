@@ -5,6 +5,24 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ###########################
+########### CRON ##########
+###########################
+# Get cron status
+alias cronstat='systemctl status cron'
+
+# View cron job history
+alias cronhist='grep CRON /var/log/syslog && echo "Your cronjob history is printed above!" || echo "Your cronjob history could not be printed!"'
+
+# check if cron is actually running anything at this moment in time 
+alias croncheck='pstree -apl `pidof cron`'
+
+# View list of root user cronjobs
+alias cronlistroot='sudo crontab -l'
+
+# View list of regular user cronjobs
+alias cronlist='crontab -l'
+
+###########################
 ###### .bash_aliases ######
 ###########################
 
