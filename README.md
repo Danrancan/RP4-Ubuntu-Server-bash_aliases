@@ -30,7 +30,7 @@ cp $HOME/.bash_aliases $HOME/.bash_aliases.orig || cd $HOME/ && git clone https:
 ```
 ### Update
 ```
-cd $HOME/RP4-Ubuntu-Server-bash_aliases && git pull origin main
+cd $HOME/RP4-Ubuntu-Server-bash_aliases && git pull origin main ; . $HOME/.bash_aliases
 ```
 ### Uninstall
 ```
