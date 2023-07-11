@@ -21,7 +21,7 @@ alias otls1.2='openssl s_client -connect mail.facl.xyz:443 -tls1_2'
 alias otls1.3='openssl s_client -connect mail.facl.xyz:443 -tls1_3'
 
 # Check for all versions of TLS on mail.facl.xyz
-alias otlscheck='nmap –script ssl-enum-ciphers -p 443 mail.facl.xyz'
+alias otlscheck='nmap --script ssl-enum-ciphers mail.facl.xyz'
 
 ############################
 # USEFUL COMMANDS NO ALIAS #
