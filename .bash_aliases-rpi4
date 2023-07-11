@@ -27,6 +27,10 @@ alias otlscheck='nmap --script ssl-enum-ciphers mail.facl.xyz'
 # USEFUL COMMANDS NO ALIAS #
 ############################
 
+# COMMENT OUT SAME LINE IN MULTIPLE .CONF FILES AT ONCE USING THE FIND AND SED COMMAND.
+# Find and replace a string in all files in current directory recursively, using a seperator (|) other than slash (/) for the sed command since slashes are being used for directory locations.
+# In this example we comment out the line "ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot" in every .conf file (NOT RECURSIVELY) in the /etc/nginx/conf.d/ folder
+# EX: sudo find . -name '*.conf' -exec sed -i.bak -e 's|ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot|#ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot|g' {} \;
 # Search for and reveal what configurationfiles are using your old/static/unchangeable hostname on the raspberry pi 4
 # grep -r old_hostname / 2>/dev/null
 
