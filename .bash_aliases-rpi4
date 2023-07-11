@@ -625,7 +625,7 @@ alias wgcstat='sudo systemctl status wg-quick@wg-client0.service && echo "Here i
 alias wgslog='sudo journalctl -eu wg-quick@wg0 && echo "Your wireguard server logs are here" || echo "Syntax error. We could not get the logs of your wireguard server. Check your syntax and try again."'
 
 # Check VultrWireguard server debug logs
-alias wgslog2-"eval 'sudo journalctl -kf | grep wireguard'"
+alias wgslog2="eval 'sudo journalctl -kf | grep wireguard'"
 alias wgslog3='eval "sudo dmesg -wH | grep wireguard"'
 
 # Start VultrWireguard Tunnel
