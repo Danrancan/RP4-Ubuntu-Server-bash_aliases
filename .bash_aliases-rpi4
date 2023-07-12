@@ -901,6 +901,9 @@ alias dcerrors='sudo doveadm log errors && echo "Dovecot has the following error
 # Show Postfix status
 alias pstat='sudo service postfix status'
 
+# Postfix Version
+alias psv='postconf mail_version'
+
 # Restart Postfix
 alias pfrl='sudo systemctl restart postfix && echo "Postfix restarted correctly! YAY!" || echo "Postfix didnt restart correctly, FUCK!!!"'
 
