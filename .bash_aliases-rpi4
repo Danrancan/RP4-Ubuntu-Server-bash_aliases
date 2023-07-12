@@ -909,13 +909,19 @@ alias dcerrors='sudo doveadm log errors && echo "Dovecot has the following error
 ###########################
 
 # Show Postfix status
-alias pstat='sudo service postfix status'
+alias pftat='sudo service postfix status'
 
 # Postfix Version
-alias psv='postconf mail_version'
+alias pfv='postconf mail_version'
 
 # Restart Postfix
-alias pfrl='sudo systemctl restart postfix && echo "Postfix restarted correctly! YAY!" || echo "Postfix didnt restart correctly, FUCK!!!"'
+alias pfrl='sudo systemctl restart postfix && echo "Postfix restarted correctly! YAY!" || echo "Postfix didnt restart correctly!!!"'
+
+# Stop Postfix
+alias pfstop='sudo systemctl stop postfix && echo "Postfix stopped correctly! YAY!" || echo "Postfix did not stop correctly!!!"'
+
+# Stop Postfix
+alias pfstart='sudo systemctl start postfix && echo "Postfix started correctly! YAY!" || echo "Postfix did not start correctly!!!"'
 
 # [Whitelist] Edit the postfix whitelist
 alias pfwl='sudo nano /etc/postfix/rbl_override'
