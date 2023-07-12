@@ -479,6 +479,9 @@ alias ndrl='sudo service netdata restart'
 ######### DOVECOT #########
 ###########################
 
+# Dovecot Version
+alias dcv='dovecot --version' && echo "This is your version of Dovecot ^^^^" || echo "We could not get your Dovecot version number"'
+
 # List available password schemes (dcpsl=dovecot,password,schemes,list)
 alias dcpsl='sudo doveadm pw -l && echo "These are the available password shemes in dovecot." || echo "We could not get available password shemes in dovecot. Check your syntax and try again."'
 
