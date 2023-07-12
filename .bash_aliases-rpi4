@@ -479,8 +479,15 @@ alias ndrl='sudo service netdata restart'
 ######### DOVECOT #########
 ###########################
 
-# List available password schemes (dpsl=dove,password,schemes,list)
-alias dpsl='sudo doveadm pw -l && echo "These are the available password shemes in dovecot." || echo "We could not get available password shemes in dovecot. Check your syntax and try again."'
+# List available password schemes (dcpsl=dovecot,password,schemes,list)
+alias dcpsl='sudo doveadm pw -l && echo "These are the available password shemes in dovecot." || echo "We could not get available password shemes in dovecot. Check your syntax and try again."'
+
+# verify the current setting for dovecot dh (diffie hellman) parameters (i.e. show location of dovecot diffie-hellman file)
+alias dcdh='doveconf -S | grep "^ssl_dh"'
+
+# Check size of Dovecot diffie hellman file
+alias dcdhs='openssl dhparam -in /usr/share/dovecot/dh.pem -text -noout'
+
 
 ###########################
 ########### DNS ###########
