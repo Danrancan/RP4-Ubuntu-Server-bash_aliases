@@ -536,9 +536,6 @@ alias fpm7rl='sudo systemctl restart php7.3-fpm.service && echo "sudo systemctl 
 # restart php7.4-fpm
 alias fpmrl='sudo systemctl restart php7.4-fpm.service && echo "sudo systemctl restart php7.4-fpm.service command worked, FPM reloaded Correctly" || echo "Syntax Error, FPM7.4 did not reload correctly"'
 
-# Restart Dovecot
-alias dcrl='sudo systemctl restart dovecot && echo "Dovecot restarted correctly! YAY!" || echo "Dovecot didnt restart correctly, FUCK!!!"'
-
 # Reload mariadb-server
 alias mrl='sudo systemctl restart mariadb && echo "Mariadb-server restarted correctly! YAY!" || echo "Mariadb-server didnt restart correctly FUCK!!!"'
 
@@ -895,6 +892,18 @@ alias f2blogtail2='sudo tail /var/log/fail2ban.log'
 ######### DOVECOT #########
 ###########################
 
+# Dovecot Status
+alias dcstat='sudo systemctl status dovecot && echo "^^^^ Here is the status of Dovecot" || echo "We could not get the status of Dovecot"'
+
+# Dovecot Start
+alias dcstart='sudo systemctl start dovecot && echo "Dovecot started correctly!" || echo "Dovecot did not start correctly!!!"'
+
+# Dovecot Stop
+alias dcstop='sudo systemctl stop dovecot && echo "Dovecot stopped correctly!" || echo "Dovecot could not stop correctly!!!"'
+
+# Dovecot Restart
+alias dcrl='sudo systemctl restart dovecot && echo "Dovecot restarted correctly! YAY!" || echo "Dovecot didnt restart correctly!!!"'
+
 # Show dovecot settings
 alias dcsettings='dovecot -n && echo "Your current dovecot settings are..." || echo "The Doevecot settings could not be read. Is dovecot working?"'
 
@@ -908,20 +917,20 @@ alias dcerrors='sudo doveadm log errors && echo "Dovecot has the following error
 ######### POSTFIX #########
 ###########################
 
-# Show Postfix status
-alias pftat='sudo service postfix status'
-
 # Postfix Version
-alias pfv='postconf mail_version'
+alias pfv='postconf mail_version && echo "^^^^ Here is your Postfix Version" || echo "We could not get your Postfix Version"''
 
-# Restart Postfix
-alias pfrl='sudo systemctl restart postfix && echo "Postfix restarted correctly! YAY!" || echo "Postfix didnt restart correctly!!!"'
+# Postfix status
+alias pftat='sudo service postfix status && echo "^^^^ Here is the status of Postfix!" || echo "We could not get the status of Postfix!"''
+
+# Start Postfix
+alias pfstart='sudo systemctl start postfix && echo "Postfix started correctly! YAY!" || echo "Postfix did not start correctly!!!"'
 
 # Stop Postfix
 alias pfstop='sudo systemctl stop postfix && echo "Postfix stopped correctly! YAY!" || echo "Postfix did not stop correctly!!!"'
 
-# Stop Postfix
-alias pfstart='sudo systemctl start postfix && echo "Postfix started correctly! YAY!" || echo "Postfix did not start correctly!!!"'
+# Restart Postfix
+alias pfrl='sudo systemctl restart postfix && echo "Postfix restarted correctly! YAY!" || echo "Postfix didnt restart correctly!!!"'
 
 # [Whitelist] Edit the postfix whitelist
 alias pfwl='sudo nano /etc/postfix/rbl_override'
