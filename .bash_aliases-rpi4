@@ -876,6 +876,9 @@ alias f2bbanned2='sudo iptables -L && echo "Here are the iptables. Notice the ba
 # Unban all IP's banned by fail2ban
 alias f2bunbanall='sudo fail2ban-client unban --all && echo "Success! All fail2ban IPs have been unbanned" || echo "Fail2ban couldn not unban any clients. Check your syntax."'
 
+# Ban specific IP address [alias command] "IP Addresss"
+alias f2bbanip='sudo fail2ban-client set wordpress-hard banip'
+
 # Quick access to fail2bans jail.local config file
 alias f2bjaillocal='sudo nano -c /etc/fail2ban/jail.local'
 
