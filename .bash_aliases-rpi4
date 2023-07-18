@@ -9,7 +9,7 @@
 ##################################
 
 # Update this aliases file in "$HOME/RP4-Ubuntu-Server-bash_aliases" and source the Ubuntu Users updated aliases file so it reflects changes to the github main repo
-alias alup='/usr/bin/git -C $HOME/RP4-Ubuntu-Server-bash_aliases pull origin main ; . $HOME/.bash_aliases
+alias alup='/usr/bin/git -C $HOME/RP4-Ubuntu-Server-bash_aliases pull origin main ; . $HOME/.bash_aliases'
 
 ############################
 ######## OPEN SSL ##########
