@@ -1203,8 +1203,8 @@ alias nconf='sudo nano -c /etc/nginx/nginx.conf'
 # Quick access to sites available
 alias savail='cd /etc/nginx/sites-available/'
 
-# Quick access to conf.d folder
-alias confd='cd /etc/nginx/conf.d/'
+# Quick access to Nginx conf.d folder
+alias nconfd='cd /etc/nginx/conf.d/'
 
 # Quick access to totemlife.xyz in sites available
 alias vtotem='sudo nano -c /etc/nginx/sites-available/totemlife.xyz.conf'
