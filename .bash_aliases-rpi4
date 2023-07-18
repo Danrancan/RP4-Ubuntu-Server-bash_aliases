@@ -150,16 +150,27 @@ alias sdrstop='sudo systemctl stop systemd-resolved --now && echo "systemd-resol
 alias sdrrl='sudo systemctl restart systemd-resolved --now && echo "systemd-resolved has been restarted." || echo "systemd-resolved could not be restarted. Is it running?"'
 
 ###########################
-## GENERAL LOG CHECKING ###
+###### LOG CHECKING #######
 ###########################
 
 # AUTH
 alias catauthlog='sudo cat /var/log/auth.log'
 alias catkernlog='sudo cat /var/log/kern.log'
 
-# MAIL
+# MAIL LOG 
+
+# Mail log with tail and no -f (Default)
+# Check the journal/logs of the main mail program located at /var/log/mail.log
+alias maillog='sudo tail /var/log/mail.log'
+alias mailerrlog='sudo tail /var/log/mail.err'
+
+# Mail log with cat
 alias catmaillog='sudo cat /var/log/mail.log'
 alias catmailerrlog='sudo cat /var/log/mail.err'
+
+# Mail Log with tail -f
+alias tailmaillog='sudo tail -f /var/log/mail.log'
+alias tailmailerrlog='sudo tail -f /var/log/mail.err'
 
 # MODSECURITY
 alias catmodseclog='sudo cat /var/log/modsec_audit.log'
@@ -226,10 +237,6 @@ alias catwpdanran='sudo cat /var/log/wordpress/danran.rocks.error.log'
 # AUTH
 alias tailauthlog='sudo tail -f /var/log/auth.log'
 alias tailkernlog='sudo tail -f /var/log/kern.log'
-
-# MAIL
-alias tailmaillog='sudo tail -f /var/log/mail.log'
-alias tailmailerrlog='sudo tail -f /var/log/mail.err'
 
 # MODSECURITY
 alias tailmodseclog='sudo tail -f /var/log/modsec_audit.log'
@@ -763,9 +770,6 @@ alias dports='sudo ss -lnpt | grep dovecot && echo "Dovecot is listening on the 
 # List dovecot users
 alias dusers="sudo doveadm user '*'"
 
-# Mail log
-alias maillog='cat /var/log/mail.log'
-
 # Dovecot journal
 alias dovjourn='sudo journalctl -eu dovecot'
 
@@ -781,10 +785,6 @@ alias nlog='sudo journalctl -eu nginx'
 
 # Check the journal/logs of clamav-freshclam
 alias clamlog='sudo journalctl -eu clamav-freshclam'
-
-# Check the journal/logs of the main mail program located at /var/log/mail.log
-alias tailmail='sudo tail -f /var/log/mail.log'
-alias maillog='sudo tail /var/log/mail.log'
 
 # Tail modsec log
 alias tailmodsec='sudo tail -f /var/log/modsec_audit.log'
