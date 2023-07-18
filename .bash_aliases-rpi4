@@ -4,6 +4,13 @@
 # However, if you want to uninstall this, you can read the readme file again, or run the following command below:
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
+##################################
+# RP4-Ubuntu-Server-bash_aliases #
+##################################
+
+# Update this aliases file in "$HOME/RP4-Ubuntu-Server-bash_aliases" and source the Ubuntu Users updated aliases file so it reflects changes to the github main repo
+alias alup='/usr/bin/git -C $HOME/RP4-Ubuntu-Server-bash_aliases pull origin main ; . $HOME/.bash_aliases
+
 ############################
 ######## OPEN SSL ##########
 ############################
