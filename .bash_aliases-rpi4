@@ -1337,10 +1337,10 @@ alias psflush='sudo touch /usr/share/nginx/ngx_pagespeed_cache/cache.flush && ec
 ##
 
 # Turn on Modsecurity
-alias modsecon='sudo cp /etc/nginx/nginx.conf.modsec-on /etc/nginx/nginx.conf && sudo service nginx restart && echo "Modsecurity is now on and Enginx has been reloaded." || echo "Modsecurity was not turned on. Nginx probably wasn not reloaded. Check syntax and try again"'
+alias modsecon='sudo sed -i "s|modsecurity off|modsecurity on|g" /etc/nginx/nginx.conf && sudo service nginx restart && echo "Modsecurity is now on and Nginx has been reloaded." || echo "Modsecurity was not turned on. Nginx probably was not reloaded. Maybe Modsec is already on? Check your syntax and try again"'
 
 # Turn off Modsecurity
-alias modsecoff='sudo cp /etc/nginx/nginx.conf.modsec-off /etc/nginx/nginx.conf && sudo service nginx restart && echo "Modsecurity was turned off and Enginx has been reloaded." || echo "Modsecurity was NOT turned off. Nginx probably was NOT reloaded. Check syntax and try again"'
+alias modsecoff='sudo sed -i "s|modsecurity on|modsecurity off|g" /etc/nginx/nginx.conf && sudo service nginx restart && echo "Modsecurity is now off and Nginx has been reloaded." || echo "Modsecurity was NOT turned off. Nginx probably was not reloaded. Maybe Modsec is already off? Check your syntax and try again."'
 
 ###########################
 ######## NETPLAN ##########
