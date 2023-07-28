@@ -187,7 +187,7 @@ alias catsyslog='sudo cat /var/log/syslog'
 alias catvpnlog='sudo cat /var/log/vpn_checking.log'
 
 # FAIL2BAN
-alias catf2blog='sudo cat /var/log/fail2ban.log'
+alias f2bcatlog='sudo cat /var/log/fail2ban.log'
 
 # AMPLIFY
 alias catamplifylog='sudo cat /var/log/amplify-agent/agent.log'
@@ -253,7 +253,7 @@ alias tailsyslog='sudo tail -f /var/log/syslog'
 alias tailvpnlog='sudo tail -f /var/log/vpn_checking.log'
 
 # FAIL2BAN
-alias tailf2blog='sudo tail -f /var/log/fail2ban.log'
+alias f2btaillog='sudo tail -f /var/log/fail2ban.log'
 
 # AMPLIFY
 alias tailamplifylog='sudo tail -f /var/log/amplify-agent/agent.log'
@@ -879,6 +879,9 @@ alias f2bsshdstat='sudo fail2ban-client status sshd && echo "The status of the S
 # Check all banned IP's in fail2ban
 alias f2bbanned='sudo zgrep "Ban" /var/log/fail2ban.log* && echo "Fail2ban has banned the following ip addresses..." || echo "Fail2ban could not check the banned IP addresses. Is fail2ban working?"'
 alias f2bbanned2='sudo iptables -L && echo "Here are the iptables. Notice the banned fail2ban IPs." || echo "We could not get the fail2ban iptables. Check your syntax."'
+
+# Reset all IP's and logs by fail2ban to factory settings
+alias f2breset='sudo /usr/local/bin/fail2ban_all_jail_ip_banner.sh'
 
 # Unban all IP's banned by fail2ban
 alias f2bunbanall='sudo fail2ban-client unban --all && echo "Success! All fail2ban IPs have been unbanned" || echo "Fail2ban couldn not unban any clients. Check your syntax."'
