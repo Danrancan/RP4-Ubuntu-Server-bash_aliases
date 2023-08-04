@@ -916,11 +916,10 @@ alias f2bbanned='sudo zgrep "Ban" /var/log/fail2ban.log* && echo "Fail2ban has b
 alias f2bbanned2='sudo iptables -L && echo "Here are the iptables. Notice the banned fail2ban IPs." || echo "We could not get the fail2ban iptables. Check your syntax."'
 
 # F2BACTIVEBANS
-# Active Bans - List complete line of IP Tables for Active Bans
-#alias f2bactivebans=sudo iptables -L -n | awk '$1=="REJECT" && $4!="0.0.0.0/0"'
-alias f2bactivebans='sudo iptables -L -n | awk `$1=="REJECT" && $4!="0.0.0.0/0"`
-# Active Bans - List IP's Only
-#alias f2bactivebans2="sudo iptables -L -n | awk '$1=="REJECT" && $4!="0.0.0.0/0" {print $4}'"
+# Active Bans - List complete line of IP Tables for Active Bans (this requires having the f2bactivebans.sh script in your /usr/local/bin folder.
+# The script contains this command: sudo iptables -L -n | awk '$1=="REJECT" && $4!="0.0.0.0/0"'
+# The command the script contains was found on: https://serverfault.com/questions/841183/how-to-show-all-banned-ip-with-fail2ban
+alias f2bactivebans='sudo /usr/local/bin/f2bactivebans.sh'
 
 # Reset all IP's and logs by fail2ban to factory settings
 # This requires https://github.com/mitchellkrogza/fail2ban-useful-scripts/raw/master/f2b-reset-log-db.sh in /usr/local/bin
