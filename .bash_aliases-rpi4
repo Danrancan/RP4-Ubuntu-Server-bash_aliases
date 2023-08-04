@@ -893,6 +893,9 @@ alias gzdanran='curl -IL https://danran.rocks -H "Accept-Encoding: gzip"'
 ######### FAIL2BAN ########
 ###########################
 
+# Get Status of fail2ban
+alias f2bstat='sudo systemctl status fail2ban && echo "Fail2ban Status is ^^^^^^^" || echo "Fail2ban could get its status, is it running? Check your syntax."'
+
 # Restart fail2ban
 alias f2brl='sudo systemctl restart fail2ban && echo "fail2ban was restarted" || echo "fail2ban could NOT RESTART. Check your syntax."'
 
@@ -913,15 +916,13 @@ alias f2bbanned='sudo zgrep "Ban" /var/log/fail2ban.log* && echo "Fail2ban has b
 alias f2bbanned2='sudo iptables -L && echo "Here are the iptables. Notice the banned fail2ban IPs." || echo "We could not get the fail2ban iptables. Check your syntax."'
 
 # Reset all IP's and logs by fail2ban to factory settings
-alias f2breset='sudo /usr/local/bin/fail2ban_all_jail_ip_banner.sh'
+# This requires https://github.com/mitchellkrogza/fail2ban-useful-scripts/raw/master/f2b-reset-log-db.sh in /usr/local/bin
+# This script clears the log file and database of Fail2Ban This resets Fail2Ban to a completely clean state Useful to use 
+# after you have finished testing all your jails and completed your initial setup of Fail2Ban and are now putting the server into LIVE mode
+alias f2breset='sudo /usr/local/bin/f2b-reset-log-db.sh'
 
 # Unban all IP's banned by fail2ban
-alias f2bunbanall='sudo fail2ban-client unban --all && echo "Success! All fail2ban IPs have been unbanned" || echo "Fail2ban couldn not unban any clients. Check your syntax."'
-
-# Ban specific IP address in wordpress-hard jail
-# Syntax: f2bbanip [IP Addresss]
-# We comment this out since it only bans for the "wordpress-hard" jail. Use the alias below this for banning accross all jails.
-#alias f2bbanip='sudo fail2ban-client set wordpress-hard banip'
+alias f2bunbanall='sudo fail2ban-client unban --all && echo "Success! All fail2ban IPs have been unbanned" || echo "Fail2ban could not unban any clients. Check your syntax."'
 
 # Ban specific IP address accross all jails. 
 # Syntax = f2bbanip [IP address to ban]
