@@ -915,6 +915,12 @@ alias f2bsshdstat='sudo fail2ban-client status sshd && echo "The status of the S
 alias f2bbanned='sudo zgrep "Ban" /var/log/fail2ban.log* && echo "Fail2ban has banned the following ip addresses..." || echo "Fail2ban could not check the banned IP addresses. Is fail2ban working?"'
 alias f2bbanned2='sudo iptables -L && echo "Here are the iptables. Notice the banned fail2ban IPs." || echo "We could not get the fail2ban iptables. Check your syntax."'
 
+# F2BACTIVEBANS
+# Active Bans - List complete line of IP Tables for Active Bans
+alias f2bactivebans="sudo iptables -L -n | awk '$1=="REJECT" && $4!="0.0.0.0/0"'"
+# Active Bans - List IP's Only
+alias f2bactivebans2="sudo iptables -L -n | awk '$1=="REJECT" && $4!="0.0.0.0/0" {print $4}'"
+
 # Reset all IP's and logs by fail2ban to factory settings
 # This requires https://github.com/mitchellkrogza/fail2ban-useful-scripts/raw/master/f2b-reset-log-db.sh in /usr/local/bin
 # This script clears the log file and database of Fail2Ban This resets Fail2Ban to a completely clean state Useful to use 
