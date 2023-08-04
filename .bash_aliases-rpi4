@@ -839,6 +839,26 @@ alias fcgiflushcake='sudo rm -Rf /var/www/fastcgi_cache/oddcake.net/* && echo "F
 #alias fcgiflushmo='sudo rm -Rf /usr/share/nginx/mcmo.is_fastcgi_cache/* && echo "FastCGI Cache has been flushed for mcmo.is" || echo "FastCGI Cache Could not be flushed for mcmo.is"'
 alias fcgiflushmo='sudo rm -Rf /var/www/fastcgi_cache/mcmo.is/* && echo "FastCGI Cache has been flushed for mcmo.is" || echo "FastCGI Cache Could not be flushed for mcmo.is"'
 
+### FASTCGI CACHING ON/OFF
+
+Turn FastCGI Caching on for McMo.is
+alias fcgionmo='sudo sed -i "s|fastcgi_cache off;|#fastcgi_cache off;|g" /etc/nginx/sites-available/03-mcmo.is.conf && sudo sed -i "s|#fastcgi_cache mcmo.is;|fastcgi_cache mcmo.is;|g" /etc/nginx/sites-available/03-mcmo.is.conf && sudo service nginx restart && echo "FastCGI for McMo.is is now on and Nginx has been reloaded." || echo "Fastcgi was NOT turned on for McMo.is. Nginx probably was not reloaded. Maybe it is already on? Check your syntax and try again"'
+
+Turn FastCGI Caching off for McMo.is
+alias fcginmooff='sudo sed -i "s|#fastcgi_cache off;|fastcgi_cache off;|g" /etc/nginx/sites-available/03-mcmo.is.conf && sudo sed -i "s|fastcgi_cache mcmo.is;|#fastcgi_cache mcmo.is;|g" /etc/nginx/sites-available/03-mcmo.is.conf && sudo service nginx restart && echo "FastCGI for McMo.is is now off and Nginx has been reloaded." || echo "Fastcgi was NOT turned off for McMo.is. Nginx probably was not reloaded. Maybe it is already off? Check your syntax and try again"'
+
+Turn FastCGI Caching on for oddcake.net
+alias fcgicakeon='sudo sed -i "s|fastcgi_cache off;|#fastcgi_cache off;|g" /etc/nginx/sites-available/01-oddcake.net.conf && sudo sed -i "s|#fastcgi_cache oddcake.net;|fastcgi_cache oddcake.net;|g" /etc/nginx/sites-available/01-oddcake.net.conf && sudo service nginx restart && echo "FastCGI for oddcake.net is now on and Nginx has been reloaded." || echo "Fastcgi was NOT turned on for oddcake.net. Nginx probably was not reloaded. Maybe it is already on? Check your syntax and try again"'
+
+Turn FastCGI Caching off for oddcake.net
+alias fcginmooff='sudo sed -i "s|#fastcgi_cache off;|fastcgi_cache off;|g" /etc/nginx/sites-available/01-oddcake.net.conf && sudo sed -i "s|fastcgi_cache oddcake.net;|#fastcgi_cache oddcake.net;|g" /etc/nginx/sites-available/01-oddcake.net.conf && sudo service nginx restart && echo "FastCGI for oddcake.net is now off and Nginx has been reloaded." || echo "Fastcgi was NOT turned off for oddcake.net. Nginx probably was not reloaded. Maybe it is already off? Check your syntax and try again"'
+
+Turn FastCGI Caching on for danran.rocks
+alias fcgidanranon='sudo sed -i "s|fastcgi_cache off;|#fastcgi_cache off;|g" /etc/nginx/sites-available/02-danran.rocks.conf && sudo sed -i "s|#fastcgi_cache danran.rocks;|fastcgi_cache danran.rocks;|g" /etc/nginx/sites-available/02-danran.rocks.conf && sudo service nginx restart && echo "FastCGI for danran.rocks is now on and Nginx has been reloaded." || echo "Fastcgi was NOT turned on for danran.rocks. Nginx probably was not reloaded. Maybe it is already on? Check your syntax and try again"'
+
+Turn FastCGI Caching off for danran.rocks
+alias fcgidanranoff='sudo sed -i "s|#fastcgi_cache off;|fastcgi_cache off;|g" /etc/nginx/sites-available/02-danran.rocks.conf && sudo sed -i "s|fastcgi_cache danran.rocks;|#fastcgi_cache danran.rocks;|g" /etc/nginx/sites-available/02-danran.rocks.conf && sudo service nginx restart && echo "FastCGI for danran.rocks is now off and Nginx has been reloaded." || echo "Fastcgi was NOT turned off for danran.rocks. Nginx probably was not reloaded. Maybe it is already off? Check your syntax and try again"'
+
 ###########################
 ###### Nginx Brotli #######
 ###########################
