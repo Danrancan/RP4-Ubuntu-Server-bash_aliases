@@ -505,6 +505,18 @@ alias dcdh='doveconf -S | grep "^ssl_dh"'
 # Check size of Dovecot diffie hellman file
 alias dcdhs='openssl dhparam -in /usr/share/dovecot/dh.pem -text -noout'
 
+###########################
+###### OCSP STAPLING ######
+###########################
+
+# Test OCSP Stapling on mcmo.is
+alias ocsptestmo="echo QUIT | openssl s_client -connect www.mcmo.is:443 -status 2> /dev/null | grep -A 17 'OCSP response:' | grep -B 17 'Next Update'"
+
+# Test OCSP Stapling on danran.rocks
+alias ocsptestdanran="echo QUIT | openssl s_client -connect danran.rocks:443 -status 2> /dev/null | grep -A 17 'OCSP response:' | grep -B 17 'Next Update'"
+
+# Test OCSP Stapling on oddcake.net
+alias ocsptestcake="echo QUIT | openssl s_client -connect oddcake.net:443 -status 2> /dev/null | grep -A 17 'OCSP response:' | grep -B 17 'Next Update'"
 
 ###########################
 ########### DNS ###########
