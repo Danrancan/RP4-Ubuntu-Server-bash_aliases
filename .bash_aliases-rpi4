@@ -825,6 +825,9 @@ alias psdanran='curl -I -p https://www.danran.rocks'
 
 # Flush/Purge pagespeed cache
 alias psflush='sudo touch /usr/share/nginx/ngx_pagespeed_cache/cache.flush'
+alias psflushmo='sudo touch /var/www/pagespeed_cache/mcmo.is/cache.flush'
+alias psflushcake='sudo touch /var/www/pagespeed_cache/oddcake.net/cache.flush'
+alias psflushdanran='sudo touch /var/www/pagespeed_cache/danran.rocks/cache.flush'
 
 ###########################
 ###### Nginx Fastcgi ######
