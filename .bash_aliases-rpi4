@@ -664,6 +664,9 @@ alias wgcstart='sudo systemctl start wg-quick@wg-client0.service && echo "sudo s
 # Stop VultrWireguard Tunnel
 alias wgcstop='sudo systemctl stop wg-quick@wg-client0.service && echo "sudo systemctl stop wg-quick@wg-client0.service was successfully run. Wireguard Client Service has stopped running." || echo "Syntax error. We could not stop the Wireguard client. Check your syntax and try again."'
 
+# Start VultrWireguard Tunnel
+alias wgcrl='sudo systemctl restart wg-quick@wg-client0.service && echo "sudo systemctl restart wg-quick@wg-client0.service was successfully run. The Wireguard Client Service has been restarted." || echo "We could not restart the Wireguard client. Check your syntax and try again."'
+
 # Enable VultrWireguard Tunnel on Boot
 alias wgcenable='sudo systemctl enable wg-quick@wg-client0.service && echo "sudo systemctl enable wg-quick@wg-client0.service was successfully run. Wireguard Client Service is now enabled at boot." || echo "Syntax error. We could disable the wireguard client on boot. Check your syntax and try again."'
 
@@ -689,6 +692,9 @@ alias wgsstart='sudo systemctl start wg-quick@wg0.service && echo "sudo systemct
 
 # Stop VultrWireguard Tunnel
 alias wgsstop='sudo systemctl stop wg-quick@wg0.service && echo "sudo systemctl stop wg-quick@wg0.service was successfully run. Wireguard Server Service has stopped running." || echo "Syntax error. We could not stop the Wireguard Server. Check your syntax and try again."'
+
+# Reload VultrWireguard Server
+alias wgsrl='sudo systemctl restart wg-quick@wg0.service && echo "sudo systemctl restart wg-quick@wg0.service was successfully run. Wireguard Server Service has been restarted." || echo "Syntax error. We could not restart the Wireguard Server. Check your syntax and try again."'
 
 # Enable VultrWireguard Tunnel on Boot
 alias wgsenable='sudo systemctl enable wg-quick@wg0.service && echo "sudo systemctl enable wg-quick@wg0.service was successfully run. Wireguard Server Service is now enabled at boot." || echo "Syntax error. We could disable the wireguard Server on boot. Check your syntax and try again."'
