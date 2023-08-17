@@ -858,7 +858,8 @@ alias fcgiflushcake='sudo rm -Rf /var/www/cache/fastcgi_cache/oddcake.net/* && e
 
 # Flush/Purge mcmo.is Fastcgi Cache
 #alias fcgiflushmo='sudo rm -Rf /usr/share/nginx/mcmo.is_fastcgi_cache/* && echo "FastCGI Cache has been flushed for mcmo.is" || echo "FastCGI Cache Could not be flushed for mcmo.is"'
-alias fcgiflushmo='sudo rm -Rf /var/www/cache/fastcgi_cache/mcmo.is/* && echo "FastCGI Cache has been flushed for mcmo.is" || echo "FastCGI Cache Could not be flushed for mcmo.is"'
+#alias fcgiflushmo='sudo rm -Rf /var/www/cache/fastcgi_cache/mcmo.is/* && echo "FastCGI Cache has been flushed for mcmo.is" || echo "FastCGI Cache Could not be flushed for mcmo.is"'
+alias fcgiflushmo='sudo rm -Rf /var/www/cache/fastcgi_cache/mcmo.is/ && sudo service nginx restart && echo "FastCGI Cache has been flushed for mcmo.is" || echo "FastCGI Cache Could not be flushed for mcmo.is"'
 
 ### FASTCGI CACHING ON/OFF
 
