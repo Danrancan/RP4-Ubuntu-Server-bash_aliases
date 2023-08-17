@@ -846,19 +846,15 @@ alias fcgidanran='curl -I https://www.danran.rocks'
 
 # Flush/Purge All Fastcgi Cache
 #alias fcgiflushall='sudo rm -Rf /usr/share/nginx/danran.rocks_fastcgi_cache/*; sudo rm -Rf /usr/share/nginx/oddcake.net_fastcgi_cache/*; sudo rm -Rf /usr/share/nginx/mcmo.is_fastcgi_cache/* && echo "FastCGI Cache has been flushed for all websites" || echo "FastCGI Cache Could not be flushed for all sites"'
-alias fcgiflushall='sudo rm -Rf /var/www/cache/fastcgi_cache/danran.rocks/* ; sudo rm -Rf /var/www/cache/fastcgi_cache/oddcake.net/*; sudo rm -Rf /var/cache/www/fastcgi_cache/mcmo.is/* && echo "FastCGI Cache has been flushed for all websites" || echo "FastCGI Cache Could not be flushed for all sites"'
+alias fcgiflushall='sudo rm -Rf /var/www/cache/fastcgi_cache/danran.rocks/ ; sudo rm -Rf /var/www/cache/fastcgi_cache/oddcake.net/ ; sudo rm -Rf /var/cache/www/fastcgi_cache/mcmo.is/ && echo "FastCGI Cache has been flushed for all websites" || echo "FastCGI Cache Could not be flushed for all sites"'
 
 # Flush/Purge danran.rocks Fastcgi Cache
-#alias fcgiflushdanran='sudo rm -Rf /usr/share/nginx/danran.rocks_fastcgi_cache/* && echo "FastCGI Cache has been flushed for danran.rocks" || echo "FastCGI Cache Could not be flushed for danran.rocks"'
-alias fcgiflushdanran='sudo rm -Rf /var/www/cache/fastcgi_cache/danran.rocks/* && echo "FastCGI Cache has been flushed for danran.rocks" || echo "FastCGI Cache Could not be flushed for danran.rocks"'
+alias fcgiflushdanran='sudo rm -Rf /var/www/cache/fastcgi_cache/danran.rocks/ && sudo service nginx restart && echo "FastCGI Cache has been flushed for danran.rocks" || echo "FastCGI Cache Could not be flushed for danran.rocks"'
 
 # Flush/Purge oddcake.net Fastcgi Cache
-#alias fcgiflushcake='sudo rm -Rf /usr/share/nginx/oddcake.net_fastcgi_cache/* && echo "FastCGI Cache has been flushed for oddcake.net" || echo "FastCGI Cache Could not be flushed for oddcake.net"'
-alias fcgiflushcake='sudo rm -Rf /var/www/cache/fastcgi_cache/oddcake.net/* && echo "FastCGI Cache has been flushed for oddcake.net" || echo "FastCGI Cache Could not be flushed for oddcake.net"'
+alias fcgiflushcake='sudo rm -Rf /var/www/cache/fastcgi_cache/oddcake.net/ && sudo service nginx restart && echo "FastCGI Cache has been flushed for oddcake.net" || echo "FastCGI Cache Could not be flushed for oddcake.net"'
 
 # Flush/Purge mcmo.is Fastcgi Cache
-#alias fcgiflushmo='sudo rm -Rf /usr/share/nginx/mcmo.is_fastcgi_cache/* && echo "FastCGI Cache has been flushed for mcmo.is" || echo "FastCGI Cache Could not be flushed for mcmo.is"'
-#alias fcgiflushmo='sudo rm -Rf /var/www/cache/fastcgi_cache/mcmo.is/* && echo "FastCGI Cache has been flushed for mcmo.is" || echo "FastCGI Cache Could not be flushed for mcmo.is"'
 alias fcgiflushmo='sudo rm -Rf /var/www/cache/fastcgi_cache/mcmo.is/ && sudo service nginx restart && echo "FastCGI Cache has been flushed for mcmo.is" || echo "FastCGI Cache Could not be flushed for mcmo.is"'
 
 ### FASTCGI CACHING ON/OFF
