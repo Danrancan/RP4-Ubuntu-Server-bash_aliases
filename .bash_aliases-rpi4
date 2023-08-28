@@ -548,6 +548,7 @@ alias space='df -H /dev/sda2 && echo "Free space statistics are above" || echo "
 ###########################
 
 ### FPM-7.4
+
 # Status php7.4-fpm
 alias fpm7stat='sudo service php7.4-fpm status'
 
@@ -560,7 +561,14 @@ alias fpm7stop='sudo systemctl stop php7.4-fpm.service && echo "sudo systemctl s
 # Restart php7.4-fpm
 alias fpm7rl='sudo systemctl restart php7.4-fpm.service && echo "sudo systemctl restart php7.4-fpm.service command worked, FPM restarted Correctly" || echo "Syntax Error, fpm7.4 did not restart correctly"'
 
+# Enable php7.4-fpm
+alias fpm7enable='sudo systemctl enable php7.4-fpm.service && echo "sudo systemctl enable php7.4-fpm.service command worked, FPM enabled correctly" || echo "Syntax Error, fpm7.4 was not enabled correctly"'
+
+# Disable php7.4-fpm
+alias fpm7disable='sudo systemctl disable php7.4-fpm.service && echo "sudo systemctl disable php7.4-fpm.service command worked, FPM disabled correctly" || echo "Syntax Error, fpm7.4 was not disabled correctly"'
+
 ### FPM-8.1
+
 # Status php8.1-fpm
 alias fpm8stat='sudo service php8.1-fpm status'
 
@@ -572,6 +580,12 @@ alias fpm8stop='sudo systemctl stop php8.1-fpm.service && echo "sudo systemctl s
 
 # Restart php8.1-fpm
 alias fpm8rl='sudo systemctl restart php8.1-fpm.service && echo "sudo systemctl restart php8.1-fpm.service command worked, FPM restarted Correctly" || echo "Syntax Error, php8.1-fpm did not restart correctly"'
+
+# Enable php8.1-fpm
+alias fpm8enable='sudo systemctl enable php8.1-fpm.service && echo "sudo systemctl enable php8.1-fpm.service command worked, FPM enabled correctly" || echo "Syntax Error, fpm8.1 was not enabled correctly"'
+
+# Disable php8.1-fpm
+alias fpm8disable='sudo systemctl disable php8.1-fpm.service && echo "sudo systemctl disable php8.1-fpm.service command worked, FPM disabled correctly" || echo "Syntax Error, fpm8.1 was not disabled correctly"'
 
 ###########################
 ##### SERVICE RESTART #####
