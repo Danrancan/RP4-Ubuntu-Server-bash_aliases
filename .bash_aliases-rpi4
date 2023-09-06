@@ -372,7 +372,7 @@ alias ubuntuenable='sudo passwd ubuntu && sudo passwd -S ubuntu'
 
 # Open "Mail Whitelists" files to add to whitelists (ignore postscreen whitelists and blacklists). Then rebuild the postmap override whitelist database.
 #alias mwl='sudo nano /etc/postfix/rbl_override /etc/postfix/helo_access /etc/spamassassin/local.cf /etc/postgrey/whitelist_clients ; sudo postmap /etc/postfix/rbl_override ; sudo postmap /etc/postfix/helo_access'
-alias mwl='sudo nano /etc/opendmarc/ignore.hosts /etc/postfix/rbl_override /etc/postfix/helo_access /etc/spamassassin/local.cf /etc/postgrey/whitelist_clients ; sudo postmap /etc/postfix/rbl_override ; sudo postmap /etc/postfix/helo_access ; sudo spamassassin --lint && sudo systemctl restart spamassassin ; sudo systemctl restart amavis ; sudo systemctl restart postgrey'
+alias mwl='sudo nano /etc/opendmarc/ignore.hosts /etc/postfix/rbl_override /etc/postfix/helo_access /etc/spamassassin/local.cf /etc/postgrey/whitelist_clients ; sudo postmap /etc/postfix/rbl_override ; sudo postmap /etc/postfix/helo_access ; sudo spamassassin --lint && sudo systemctl restart spamassassin ; sudo systemctl restart amavis ; sudo systemctl restart postgrey ; sudo systemctl restart opendmarc'
 
 # Open "Mail IP Whitelists" files to add IP addresses to mail whitelists
 alias mwlip='sudo nano /etc/postfix/postscreen_access.cidr'
