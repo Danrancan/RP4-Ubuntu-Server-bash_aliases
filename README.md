@@ -26,7 +26,7 @@ all of this with the one liner command below...
 
 ### Install
 ```
-cp $HOME/.bash_aliases $HOME/.bash_aliases.orig ; cd $HOME/ && git clone https://github.com/Danrancan/RP4-Ubuntu-Server-bash_aliases.git && ln -nsf $HOME/RP4-Ubuntu-Server-bash_aliases/.bash_aliases-rpi4 $HOME/.bash_aliases && source $HOME/.bash_aliases
+cp $HOME/.bash_aliases $HOME/.bash_aliases.orig ; cd $HOME/ ; git clone https://github.com/Danrancan/RP4-Ubuntu-Server-bash_aliases.git ; ln -nsf $HOME/RP4-Ubuntu-Server-bash_aliases/.bash_aliases-rpi4 $HOME/.bash_aliases ; source $HOME/.bash_aliases
 ```
 ### Update
 ```
