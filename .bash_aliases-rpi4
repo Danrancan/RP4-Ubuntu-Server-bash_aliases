@@ -330,13 +330,13 @@ alias rootunlock='sudo usermod -U root && sudo passwd -S root'
 alias rootunlock2='sudo passwd -u root && sudo passwd -S root'
 
 # DISABLE ROOT account using usermod
-alias rootdisable="sudo usermod -p '!' root && sudo passwd -S root"
+alias rootblock="sudo usermod -p '!' root && sudo passwd -S root"
 
 # DISABLE ROOT account using passwd
-alias rootdisable2='sudo passwd -dl root && sudo passwd -S root'
+alias rootdblock2='sudo passwd -dl root && sudo passwd -S root'
 
 # ENABLE ROOT account using passwd
-alias rootenable='sudo passwd root && sudo passwd -S root'
+alias rootunblock='sudo passwd root && sudo passwd -S root'
 
 ###########################
 ######### UBUNTU ##########
