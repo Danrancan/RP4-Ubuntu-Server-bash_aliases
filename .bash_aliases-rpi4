@@ -92,8 +92,11 @@ alias wifioff='sudo rfkill block wifi && echo "Your wifi (wlan0) has been disble
 ######### BACKUPS #########
 ###########################
 
-# Backup your entire Raspberry Pi into a cloned .IMG file
-alias piclone='sudo /usr/local/bin/remove-old-backups.sh; sudo /usr/local/bin/image-backup -u --initial /mnt/RpiDbBackups/Images-Daily/$(date +\%Y\-\%m\-\%d\_\%H\:\%M\:\%S)_mail.facl.xyz.MANUAL-CLONE.img && echo "SUCCESS! Your Raspberry Pi has been cloned to a disk image." || echo "BUMMER! Your Raspberry Pi Could Not be cloned. Please check hard drive space and try again."'
+# UBUNTU 20: Backup your entire Raspberry Pi into a cloned .IMG file
+alias piclone20='sudo /usr/local/bin/remove-old-backups.sh; sudo /usr/local/bin/image-backup -u --initial /mnt/RpiDbBackups/Images-Daily/$(date +\%Y\-\%m\-\%d\_\%H\.\%M\.\%S)_MANUAL_BACKUP_UBUNTU_20_mail.facl.xyz.img && echo "SUCCESS! Your Raspberry Pi running Ubuntu 20.04 has been cloned to a disk image." || echo "BUMMER! Your Raspberry Pi running Ubuntu 20 Could Not be cloned. Please check hard drive space and try again."'
+
+# UBUNTU 22: 
+alias alias piclone22='sudo /usr/local/bin/remove-old-backups.sh; sudo /usr/local/bin/image-backup -u --initial /mnt/RpiDbBackups/Images-Daily/$(date +\%Y\-\%m\-\%d\_\%H\.\%M\.\%S)_MANUAL_BACKUP_UBUNTU_22_mail.facl.xyz.img && echo "SUCCESS! Your Raspberry Pi running Ubuntu 22.04 has been cloned to a disk image." || echo "BUMMER! Your Raspberry Pi running Ubuntu 22 Could Not be cloned. Please check hard drive space and try again."'
 
 # Backup your wordpress directories and MySql databases to disk
 alias pibackup='sudo /usr/local/bin/remove-old-backups.sh; sudo /usr/local/bin/wp+sql_backup.sh && echo "SUCCESS! Your Wordpress directories and MySql Databases have been backed up." || echo "BUMMER! Your Wordpress Directories and MySql Databases could not be backed up."'
