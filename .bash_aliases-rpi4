@@ -5,6 +5,29 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ##################################
+#### ParrotOS-bash_aliases #######
+##################################
+#alias nano='nano -c'
+#alias ali='nano ~/.bash_aliases'
+#alias sali='source ~/.bash_aliases'
+# this is to scale your desktop. Ex: 'scale 1.1x1.1'
+alias scale='xrandr --output eDP-1 --scale'
+# Put Wireless drivers into monitor mode
+alias mm='echo 1 | sudo tee /proc/brcm_monitor0 && sudo airodump-ng prism0'
+alias moni='sudo airodump-ng prism0'
+alias moni2='sudo airmon-ng start wlp3s0'
+alias apup='sudo apt update && sudo apt full-upgrade && sudo apt clean'
+alias listtools='sudo apt-get update && apt-cache search parrot-'
+# Start torghost
+alias tgstart='sudo $HOME/Git/torghost/torghost.py -s'
+# Torghost manual
+alias tgman='sudo $HOME/Git/torghost/torghost.py -h'
+# Change torghost nodes
+alias tgswitch='sudo $HOME/Git/torghost/torghost.py -r'
+alias tgstop='sudo $HOME/Git/torghost/torghost.py -x'
+alias tgupdate='sudo $HOME/Git/torghost/torghost.py -u'
+
+##################################
 # RP4-Ubuntu-Server-bash_aliases #
 ##################################
 
