@@ -834,6 +834,9 @@ alias ulist='sudo ufw list'
 ######## DEBUGGING ########
 ###########################
 
+# Test if modsecurity is working on all three websites (mcmo.is, Danran.rocks, oddcake.net)
+alias modsectest="curl 'https://oddcake.net/?foo=/etc/passwd&bar=/bin/sh' | curl 'https://www.mcmo.is/?foo=/etc/passwd&bar=/bin/sh' | curl 'https://danran.rocks/?foo=/etc/passwd&bar=/bin/sh'"
+
 # List dovecot listening ports
 alias dports='sudo ss -lnpt | grep dovecot && echo "Dovecot is listening on the above ports" || echo "Dovecot listening ports command failed. Check syntax and try again"'
 
