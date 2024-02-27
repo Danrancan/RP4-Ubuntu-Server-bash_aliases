@@ -73,6 +73,13 @@ alias otlscheck='nmap --script ssl-enum-ciphers mail.facl.xyz'
 # EX-port443: netstat -tulpn | grep --color :443
 
 ###########################
+######## HOSTNAME #########
+###########################
+
+# Find all files that use the current hostname or original immutable hostname
+alias hostnamefind='sudo grep -r $HOSTNAME / 2>/dev/null'
+
+###########################
 ########### CRON ##########
 ###########################
 
