@@ -1663,8 +1663,11 @@ alias apclean='sudo apt-get autoremove && sudo apt-get clean'
 # Get my public IP address
 alias pubip='echo "Your Public IP address is..." && curl https://ipinfo.io/ip'
 
-# Get my priviate local IP address
+# Get my private local IP address
 alias privip="ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//' && ip addr show wlan0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'"
+
+# Get my priviate local IP address for Freedombox
+alias privipfbox="ip addr show end0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'"
 
 # Get My public IP Address
 alias ipinfo='curl ipinfo.io/ip'
