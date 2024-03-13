@@ -10,7 +10,7 @@
 ##################################
 
 # Show file/folder permissions in number mode and letter mode
-alias perms='read -p "Enter a file or folder name: " file_or_folder && stat $file_or_folder | grep "Access: ("'
+alias perms='ls -la && echo "Just above are the contents of the working directory" && read -p "Which file or folder would you like to show permissions for? " file_or_folder && stat $file_or_folder | grep "Access: ("'
 
 ##################################
 #### ParrotOS-bash_aliases #######
