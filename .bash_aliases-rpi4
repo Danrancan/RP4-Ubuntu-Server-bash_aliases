@@ -6,6 +6,13 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ##################################
+### File and Folder Permissions ##
+##################################
+
+# Show file/folder permissions in number mode and letter mode
+alias perms='read -p "Enter a file or folder name: " file_or_folder && stat $file_or_folder | grep "Access: ("'
+
+##################################
 #### ParrotOS-bash_aliases #######
 ##################################
 #alias nano='nano -c'
