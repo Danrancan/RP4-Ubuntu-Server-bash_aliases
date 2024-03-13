@@ -542,6 +542,9 @@ alias dcdh='doveconf -S | grep "^ssl_dh"'
 # Check size of Dovecot diffie hellman file
 alias dcdhs='openssl dhparam -in /usr/share/dovecot/dh.pem -text -noout'
 
+# Check the dovecot config files for errors
+alias dovechk='sudo doveconf >/dev/null && echo OK'
+
 ###########################
 ###### OCSP STAPLING ######
 ###########################
@@ -1100,6 +1103,9 @@ alias pfheaderban='sudo nano /etc/postfix/header_checks'
 
 # Open postfix body checks file for banning certain lines in a body.
 alias pfbodyban='sudo nano /etc/postfix/body_checks'
+
+# Check the postfix config files for errors
+alias postchk='sudo postfix check'
 
 ################################
 ### PFLOGSUMM (POSTFIX LOGS) ###
