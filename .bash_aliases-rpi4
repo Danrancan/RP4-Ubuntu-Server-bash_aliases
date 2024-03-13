@@ -1669,6 +1669,9 @@ alias privip="ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$
 # Get my priviate local IP address for Freedombox
 alias privipfbox="ip addr show end0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'"
 
+# Get my priviate local IP address for Parrot
+alias privipp="ip addr show wlp3s0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'"
+
 # Get My public IP Address
 alias ipinfo='curl ipinfo.io/ip'
 
