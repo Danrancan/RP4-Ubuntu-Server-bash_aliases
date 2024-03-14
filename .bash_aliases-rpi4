@@ -6,11 +6,14 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ##################################
-### File and Folder Permissions ##
+####### Files and Folders ########
 ##################################
 
 # Show file/folder permissions in number mode and letter mode
 alias perms='ls -la && echo "Just above are the contents of the working directory" && read -p "Which file or folder would you like to show permissions for? " file_or_folder && stat $file_or_folder | grep "Access: ("'
+
+# Search the current directory recursively for a file by filename!
+alias ffind='read -p "Find a File! Enter the file name you are searching for. You may use wildcards \"*\" : " filename && sudo find . -type f -name "$filename"
 
 ##################################
 #### ParrotOS-bash_aliases #######
