@@ -1674,6 +1674,9 @@ alias nt='sudo nginx -t'
 # Quick access to bash aliases
 alias ali='nano -c ~/.bash_aliases'
 
+# Quickly update this (.bash_aliases-rpi4) aliases file and repository in your home folder. Also source the user ~/.bash_aliases file to instantly update aliases.
+alias aliup='git -C $HOME/RP4-Ubuntu-Server-bash_aliases pull origin main && . $HOME/.bash_aliases'
+
 # Uncomment below line to reload bash profile by typing "rl" in the terminal
 alias rl='source ~/.bash_aliases && echo "File .bash_aliases reloaded correctly" || echo "Syntax error, bash aliases not reloaded"'
 
