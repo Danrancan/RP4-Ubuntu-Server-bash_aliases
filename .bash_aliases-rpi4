@@ -6,6 +6,23 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ##################################
+########## System/Dpkg ###########
+##################################
+
+# List the state of the systemd unit files (static, enabled, disabled, masked, indirect). Note: this has nothing to do with the state of the service.
+# https://askubuntu.com/questions/710420/why-are-some-systemd-services-in-the-masked-state
+alias dpkglistunits='sudo systemctl list-unit-files'
+alias dpkglistunits2='sudo systemctl list-units --all'
+
+# List the state of systemd services including "loaded but inactive units".
+# https://askubuntu.com/questions/710420/why-are-some-systemd-services-in-the-masked-state
+alias dpkglistservices='sudo systemctl list-units --all'
+
+# List the state of systemd services exluding "loaded but inactive units".
+# https://askubuntu.com/questions/710420/why-are-some-systemd-services-in-the-masked-state
+alias dpkglistservices2='sudo systemctl list-units'
+
+##################################
 ####### Files and Folders ########
 ##################################
 
