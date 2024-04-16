@@ -597,7 +597,7 @@ alias dns3='sudo resolvectl dns $iface'
 alias dnscache='sudo systemd-resolve --statistics'
 
 # Flush DNS Cache
-alias dnsflush='sudo systemd-resolve --flush-caches && echo "DNS Cache has been flushed" || echo "Oops! We Could NOT flush the DNS Cache"'
+alias dnsflush='sudo resolvectl flush-caches && echo "DNS Cache has been flushed" || echo "Oops! We Could NOT flush the DNS Cache"'
 
 # Flush DNS Cache Using DNS-CLEAN
 alias dnsclean='sudo /etc/init.d/dns-clean start && echo "DNS Cache has been cleaned" || echo "Oops! DNS Cache COULD NOT BE CLEANED!"'
