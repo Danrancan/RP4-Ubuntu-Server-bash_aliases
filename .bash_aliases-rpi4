@@ -5,6 +5,14 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ##################################
+########## Permissions ###########
+##################################
+
+# Reset wordpress permission and ownership to default (Note: Be sure that you are already in your wordpress directory before running this command. Otherwise it is dangerous)
+alias wppermreset='sudo chown www-data:www-data  -R * && sudo find . -type d -exec chmod 755 {} \; && find . -type f -exec chmod 644 {} \; && echo "Your wordpress ownership and permissions were reset" || echo "Your wordpress ownership and permissions couldn't be reset!"'
+
+
+##################################
 ########## System/Dpkg ###########
 ##################################
 
