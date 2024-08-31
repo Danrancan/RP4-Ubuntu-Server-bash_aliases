@@ -906,7 +906,7 @@ alias nlog='sudo journalctl -eu nginx'
 alias clamlog='sudo journalctl -eu clamav-freshclam'
 
 # Tail modsec log
-alias tailmodsec='sudo tail -f /var/log/modsec_audit.log'
+alias tailmodsec='sudo tail -f /var/log/modsec_audit.log /var/log/modsec_audit.log.1'
 
 # Cat modseclog
 alias catmodsec='sudo cat /var/log/modsec_audit.log'
