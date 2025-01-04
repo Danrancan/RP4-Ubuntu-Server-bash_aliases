@@ -925,6 +925,17 @@ alias shutdownlog2='last -5 shutdown $USER'
 ##### Nginx Pagespeed #####
 ###########################
 
+## Turn Pagespeed on/off in nginx
+
+# Pagespeed ON
+alias psmoon='sudo sed -i "s|pagespeed unplugged|pagespeed on|g" /etc/nginx/sites-available/03-mcmo.is.conf && sudo service nginx restart && echo "Pagespeed is now on for McMo.is, and Nginx has been reloaded." || echo "Pagespeed for McMo.is was not turned on. Nginx probably was not reloaded. Maybe pagespeed is already on? Check your syntax and try again"'
+alias pscakeon='sudo sed -i "s|pagespeed unplugged|pagespeed on|g" /etc/nginx/sites-available/01-oddcake.net.conf && sudo service nginx restart && echo "Pagespeed is now on for oddcake.net, and Nginx has been reloaded." || echo "Pagespeed for oddcake.net was not turned on. Nginx probably was not reloaded. Maybe pagespeed is already on? Check your syntax and try again"'
+alias psdanranon='sudo sed -i "s|pagespeed unplugged|pagespeed on|g" /etc/nginx/sites-available/02-danran.rocks.conf && sudo service nginx restart && echo "Pagespeed is now on for danran.rocks, and Nginx has been reloaded." || echo "Pagespeed for danran.rocks was not turned on. Nginx probably was not reloaded. Maybe pagespeed is already on? Check your syntax and try again"'
+# Pagespeed Off
+alias psmooff='sudo sed -i "s|pagespeed on|pagespeed unplugged|g" /etc/nginx/sites-available/03-mcmo.is.conf && sudo service nginx restart && echo "Pagespeed is now off for McMo.is, and Nginx has been reloaded." || echo "Pagespeed for McMo.is was not turned off. Nginx was probably not reloaded. Maybe pagespeed is already off? Check your syntax and try again"'
+alias pscakeon='sudo sed -i "s|pagespeed on|pagespeed unplugged|g" /etc/nginx/sites-available/01-oddcake.net.conf && sudo service nginx restart && echo "Pagespeed is now off for oddcake.net, and Nginx has been reloaded." || echo "Pagespeed for oddcake.net was not turned off. Nginx was probably not reloaded. Maybe pagespeed is already off? Check your syntax and try again"'
+alias psdanranoff='sudo sed -i "s|pagespeed on|pagespeed unplugged|g" /etc/nginx/sites-available/02-danran.rocks.conf && sudo service nginx restart && echo "Pagespeed is now off for DanRan.rocks, and Nginx has been reloaded." || echo "Pagespeed for DanRan.rocks was not turned off. Nginx was probably not reloaded. Maybe pagespeed is already off? Check your syntax and try again"'
+
 # Test pagespeed
 alias pscake='curl -I -p https://www.oddcake.net'
 alias psmo='curl -I -p https://www.mcmo.is'
