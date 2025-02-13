@@ -5,6 +5,14 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ##################################
+########## Mysqltuner.pl #########
+##################################
+
+# We are using the mysqltuner.pl downloaded from github https://github.com/major/MySQLTuner-perl, located in /usr/local/bin. So lets activate it with the 'mysqltunenr' command.
+# Activate mysqltuner
+alias mysqltuner=`sudo perl mysqltuner --host 127.0.0.1'
+
+##################################
 ########## Permissions ###########
 ##################################
 
