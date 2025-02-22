@@ -5,6 +5,13 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ##################################
+############# daemons ############
+##################################
+
+# Reload systemd daemons
+alias drl='sudo systemctl daemon-reload && echo "SUCCESS! The systemctl daemon has been reloaded." || echo "FAILURE! The systemctl daemon could NOT be reloaded. Check your syntax and try again."'
+
+##################################
 ########## Mysqltuner.pl #########
 ##################################
 
