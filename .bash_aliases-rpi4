@@ -679,7 +679,7 @@ alias fpm8disable='sudo systemctl disable php8.1-fpm.service && echo "sudo syste
 alias sshrl='sudo systemctl restart sshd.service && echo "sudo systemctl restart sshd.service command worked, SSHD reloaded Correctly" || echo "Syntax Error, sshd did not reload correctly"'
 
 # Reload mysql
-alias sqlrl='sudo service mysql restart; sudo sysctl restart mariadb  && echo "mysql/mariadb restarted Correctly" || echo "Syntax Error, mysql/mariadb did not restart correctly"'
+alias sqlrl='sudo systemctl restart mysql; sudo sysemctl restart mariadb  && echo "mysql/mariadb restarted Correctly" || echo "Syntax Error, mysql/mariadb did not restart correctly"'
 
 # Reload Nginx
 alias nrl='sudo service nginx reload && echo "Nginx reloaded correctly" || echo "Syntax Error, Nginx not reloaded correctly"'
