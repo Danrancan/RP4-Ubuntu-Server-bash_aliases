@@ -1258,6 +1258,12 @@ alias clamdstat='sudo systemctl status clamav-daemon && echo "clamav-daemon has 
 # Restart clamav-daemon
 alias clamdrl='sudo systemctl restart clamav-daemon && echo "clamav-daemon has restarted..." || echo "clamav-daemon could not restart. Is clamav-daemon broken?"'
 
+# Start clamav-daemon
+alias clamdstart='sudo systemctl start clamav-daemon && echo "clamav-daemon has started..." || echo "clamav-daemon could not start. Is clamav-daemon broken?"'
+
+# Start clamav-daemon
+alias clamdstop='sudo systemctl stop clamav-daemon && echo "clamav-daemon has stopped..." || echo "clamav-daemon could not stop. Is clamav-daemon broken?"'
+
 # Start a virus scan with clamav-daemon.service's clamdscan.
 alias clamdscan='sudo clamdscan --fdpass / && echo "Clamdscan is searching for viruses..." || echo "Clamdscan could not scan for viruses. Is clamdscan virus scan broken?"'
 
