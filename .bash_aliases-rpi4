@@ -1235,19 +1235,19 @@ alias odmwl='sudo nano /etc/opendmarc/ignore.hosts'
 # 2) clamav-freshclam.service: the ClamAV virus database updater
 
 # Start clamav-freshclam.service
-alias freshclamstart='systemctl start clamav-freshclam && echo "clamav-freshclam has started..." || echo "clamav-freshclam could not start. Is clamav-freshclam broken?"'
+alias freshclamstart='sudo systemctl start clamav-freshclam && echo "clamav-freshclam has started..." || echo "clamav-freshclam could not start. Is clamav-freshclam broken?"'
 
 # Stop clamav-freshclam.service
-alias freshclamstop='systemctl stop clamav-freshclam && echo "clamav-freshclam has stopped..." || echo "clamav-freshclam could not stop. Is clamav-freshclam broken?"'
+alias freshclamstop='sudo systemctl stop clamav-freshclam && echo "clamav-freshclam has stopped..." || echo "clamav-freshclam could not stop. Is clamav-freshclam broken?"'
 
 # Update clamav-freshclam.service
 alias freshclamupdate='sudo freshclam && echo "clamav-freshclam has been updated..." || echo "clamav-freshclam has not been updated. Is clamav-freshclam update broken?"'
 
 # Check the status of clamav-freshclam.service
-alias freshclamstat='systemctl status clamav-freshclam && echo "clamav-freshclam has a status of..." || echo "clamav-freshclam could not show its status. Is clamav-freshclam broken?"'
+alias freshclamstat='sudo systemctl status clamav-freshclam && echo "clamav-freshclam has a status of..." || echo "clamav-freshclam could not show its status. Is clamav-freshclam broken?"'
 
 # Restart clamav-freshclam.service
-alias freshclamrl='systemctl restart clamav-freshclam && echo "clamav-freshclam has restarted..." || echo "clamav-freshclam could not restart. Is clamav-freshclam broken?"'
+alias freshclamrl='sudo systemctl restart clamav-freshclam && echo "clamav-freshclam has restarted..." || echo "clamav-freshclam could not restart. Is clamav-freshclam broken?"'
 
 # Check the journal/log of clamav-freshclam
 alias freshclamlog='sudo journalctl -eu clamav-freshclam && echo "clamav-freshclams logs are here..." || echo "clamav-freshclam could not show its journal/log. Are clamav-freshclam  logs broken?"'
