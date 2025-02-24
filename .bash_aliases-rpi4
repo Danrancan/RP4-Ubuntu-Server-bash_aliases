@@ -5,6 +5,19 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ##################################
+############ Journal #############
+##################################
+
+# Get Journal Disk Space and Disk Usage
+alias jusage='du -sh /var/log/journal ; journalctl --disk-usage'
+# Journal Verify
+alias jverify='journalctl --verify'
+# Journal Permissions list
+alias jperms='ls -l /var/log/journal/*'
+# Journal Restart
+alias jrl='sudo systemctl restart systemd-journald'
+
+##################################
 ############# daemons ############
 ##################################
 
