@@ -1180,7 +1180,7 @@ alias pfheaderban='sudo nano /etc/postfix/header_checks'
 alias pfbodyban='sudo nano /etc/postfix/body_checks'
 
 # Check the postfix config files for errors
-alias postchk='sudo postfix check'
+alias pfcheck='sudo postfix check'
 
 ################################
 ### PFLOGSUMM (POSTFIX LOGS) ###
