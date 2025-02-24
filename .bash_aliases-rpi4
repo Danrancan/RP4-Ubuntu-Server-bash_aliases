@@ -1253,16 +1253,16 @@ alias clamdscan='sudo clamdscan --fdpass / && echo "Clamdscan is searching for v
 ###########################
 
 # Check the status of amavis
-alias amavisstat='systemctl status amavis && echo "Amavis has a status of..." || echo "Amavis could not show its status. Is Amavis broken?"'
+alias amavisstat='sudo systemctl status amavis && echo "Amavis has a status of..." || echo "Amavis could not show its status. Is Amavis broken?"'
 
 # Restart Amavis
-alias amavisrl='systemctl restart amavis && echo "Amavis has restarted..." || echo "Amavis could not restart. Is Amavis broken?"'
+alias amavisrl='sudo systemctl restart amavis && echo "Amavis has restarted..." || echo "Amavis could not restart. Is Amavis broken?"'
 
 # Start Amavis
-alias amavisstart='systemctl start amavis && echo "Amavis has started..." || echo "Amavis could not start. Is Amavis broken?"'
+alias amavisstart='sudo systemctl start amavis && echo "Amavis has started..." || echo "Amavis could not start. Is Amavis broken?"'
 
 # Stop Amavis
-alias amavisstop='systemctl stop amavis && echo "Amavis has stopped..." || echo "Amavis could not stop. Is Amavis running?"'
+alias amavisstop='sudo systemctl stop amavis && echo "Amavis has stopped..." || echo "Amavis could not stop. Is Amavis running?"'
 
 # Check the journal/logs of Amavis
 alias amavislog='sudo journalctl -eu amavis'
