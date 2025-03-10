@@ -5,6 +5,15 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ##################################
+####### Files & Directories ######
+##################################
+
+# Get size of Current Directory
+alias dsize='du -sh'
+# Get size of all files in current directory
+alias fsize='ls -lh *'
+
+##################################
 ############ Journal #############
 ##################################
 
