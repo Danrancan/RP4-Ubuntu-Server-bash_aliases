@@ -5,6 +5,13 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ##################################
+########### SSH & SSHD ###########
+##################################
+# you can use tools like goaccess or fail2ban to analyze SSH logs.
+# https://last9.io/blog/sshd-logs-101/
+alias sshgolog='grep "sshd" /var/log/auth.log | goaccess --log-format=COMBINED && echo "SUCCESS! Your SSH Goaccess logs are above." || echo "FAILURE! Your SSH Goaccess logs could not be shown"'
+
+##################################
 ####### Files & Directories ######
 ##################################
 
