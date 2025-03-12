@@ -9,7 +9,7 @@
 ##################################
 # you can use tools like goaccess or fail2ban to analyze SSH logs.
 # https://last9.io/blog/sshd-logs-101/
-alias sshgolog='grep "sshd" /var/log/auth.log | goaccess --log-format=COMBINED && echo "SUCCESS! Your SSH Goaccess logs are above." || echo "FAILURE! Your SSH Goaccess logs could not be shown"'
+alias sshgolog='sudo grep "sshd" /var/log/auth.log | goaccess --log-format=COMBINED'
 
 ##################################
 ####### Files & Directories ######
