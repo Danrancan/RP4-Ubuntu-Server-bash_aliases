@@ -5,6 +5,15 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ##################################
+############## GIT ###############
+##################################
+
+# Check the current git tag you are on
+alias gtag='git describe --exact-match --tags'
+# Show current git branch
+alias gb='git branch --show-current'
+
+##################################
 ########### SSH & SSHD ###########
 ##################################
 # you can use tools like goaccess or fail2ban to analyze SSH logs.
