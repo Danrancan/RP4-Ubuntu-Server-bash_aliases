@@ -713,10 +713,10 @@ alias fpm8stop='sudo systemctl stop php8.3-fpm.service && echo "sudo systemctl s
 alias fpm8rl='sudo systemctl restart php8.3-fpm.service && echo "sudo systemctl restart php8.3-fpm.service command worked, FPM restarted Correctly" || echo "Syntax Error, php8.3-fpm did not restart correctly"'
 
 # Enable php8.3-fpm
-alias fpm8enable='sudo systemctl enable php8.3-fpm.service && echo "sudo systemctl enable php8.3-fpm.service command worked, FPM enabled correctly" || echo "Syntax Error, fpm8.1 was not enabled correctly"'
+alias fpm8enable='sudo systemctl enable php8.3-fpm.service && echo "sudo systemctl enable php8.3-fpm.service command worked, FPM enabled correctly" || echo "Syntax Error, fpm8.3 was not enabled correctly"'
 
 # Disable php8.3-fpm
-alias fpm8disable='sudo systemctl disable php8.3-fpm.service && echo "sudo systemctl disable php8.3-fpm.service command worked, FPM disabled correctly" || echo "Syntax Error, fpm8.1 was not disabled correctly"'
+alias fpm8disable='sudo systemctl disable php8.3-fpm.service && echo "sudo systemctl disable php8.3-fpm.service command worked, FPM disabled correctly" || echo "Syntax Error, fpm8.3 was not disabled correctly"'
 
 ###########################
 ##### SERVICE RESTART #####
