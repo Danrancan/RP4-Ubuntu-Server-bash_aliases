@@ -1402,6 +1402,9 @@ alias man-image='cat /usr/local/bin/image-readme.txt'
 alias ram='free -m && echo "Your ram stats are as follows..." || echo "We could not get your ram stats. Check your syntax and try again"'
 alias swap='swapon --show'
 
+# use the ncdu app to check and browsee disk space tree
+alias space='ncdu'
+
 ###########################
 #### Nginx Beautifier #####
 ###########################
