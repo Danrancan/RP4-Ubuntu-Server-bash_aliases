@@ -5,6 +5,13 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ##################################
+#SMARTMON TOOLS HARD DRIVE SPECS #
+##################################
+
+# Show NVMe Specs and stats
+alias hdstats='sudo smartctl -a /dev/nvme0n1'
+
+##################################
 ############## GIT ###############
 ##################################
 
