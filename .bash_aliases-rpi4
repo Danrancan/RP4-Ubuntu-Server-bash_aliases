@@ -5,6 +5,14 @@
 # rm $HOME/.bash_aliases && sudo rm -r $HOME/RP4-Ubuntu-Server-bash_aliases && cp $HOME/.bash_aliases.orig $HOME/.bash_aliases && source $HOME/.bash_aliases
 
 ##################################
+############# GPG/PGP ############
+##################################
+
+# Show fingerprints of detached PGP Signing key
+# SYNTAX: gpg --show-keys $PWD/PGP_File.asc
+alias finger='gpg --show-keys'
+
+##################################
 #SMARTMON TOOLS HARD DRIVE SPECS #
 ##################################
 
