@@ -10,7 +10,14 @@
 
 # Show fingerprints of detached PGP Signing key
 # SYNTAX: gpg --show-keys $PWD/PGP_File.asc
-alias finger='gpg --show-keys'
+alias gpgfinger='gpg --show-keys'
+
+# Import Signing key
+alias gpgimport='gpg --import'
+
+# List Installed keys
+alias gpglist='gpg --list-keys'
+alias gpglistfinger='gpg --list-keys --fingerprint'
 
 ##################################
 #SMARTMON TOOLS HARD DRIVE SPECS #
