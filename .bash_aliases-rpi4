@@ -8,9 +8,9 @@
 ############# GPG/PGP ############
 ##################################
 
-# Show fingerprints of detached PGP Signing key
-# SYNTAX: gpg --show-keys $PWD/PGP_File.asc
-alias gpgfinger='gpg --show-keys'
+# Show fingerprints of detached PGP Signing key (GetFingerPrint=gfp)
+# SYNTAX: gpg --show-keys --with-fingerprint --keyid-format=long name_of_file.asc
+alias gfp='gpg --show-keys --with-fingerprint --keyid-format=long'
 
 # Import Signing key
 alias gpgimport='gpg --import'
