@@ -530,7 +530,7 @@ alias ubuntuenable='sudo passwd ubuntu && sudo passwd -S ubuntu'
 
 # Open "Mail Whitelists" files to add to whitelists (ignore postscreen whitelists and blacklists). Then rebuild the postmap override whitelist database.
 #alias mwl='sudo nano /etc/postfix/rbl_override /etc/postfix/helo_access /etc/spamassassin/local.cf /etc/postgrey/whitelist_clients ; sudo postmap /etc/postfix/rbl_override ; sudo postmap /etc/postfix/helo_access'
-alias mwl='sudo nano /etc/opendmarc/ignore.hosts /etc/postfix/rbl_override /etc/postfix/helo_access /etc/spamassassin/local.cf /etc/postgrey/whitelist_clients ; sudo postmap /etc/postfix/rbl_override ; sudo postmap /etc/postfix/helo_access ; sudo spamassassin --lint && sudo systemctl restart spamassassin ; sudo systemctl restart amavis ; sudo systemctl restart postgrey ; sudo systemctl restart opendmarc'
+alias mwl='sudo nano /etc/opendmarc/ignore.hosts /etc/postfix/rbl_override /etc/postfix/helo_access /etc/spamassassin/local.cf /etc/postgrey/whitelist_clients ; sudo postmap /etc/postfix/rbl_override ; sudo postmap /etc/postfix/helo_access ; sudo spamassassin --lint && sudo systemctl restart spamd ; sudo systemctl restart amavis ; sudo systemctl restart postgrey ; sudo systemctl restart opendmarc'
 
 # Open "Mail IP Whitelists" files to add IP addresses to mail whitelists
 alias mwlip='sudo nano /etc/postfix/postscreen_access.cidr'
@@ -568,22 +568,22 @@ alias spftestfacl='dig facl.xyz txt'
 ##################################
 
 # Check status of spamassassin
-alias sastat='sudo systemctl status spamassassin spamass-milter'
+alias sastat='sudo systemctl status spamd spamass-milter'
 
 # Enable Spamassassin
-alias saenable='sudo systemctl enable spamassassin spamass-milter'
+alias saenable='sudo systemctl enable spamd spamass-milter'
 
 # Disable spamassassin
-alias sadisable='sudo systemctl disable spamassasin spamass-milter'
+alias sadisable='sudo systemctl disable spamd spamass-milter'
 
 # Start spamassassin
-alias sastart='sudo systemctl start spamassassin spamass-milter'
+alias sastart='sudo systemctl start spamd spamass-milter'
 
 # Stop spamassassin
-alias sastop='sudo systemctl stop spamassassin spamass-milter'
+alias sastop='sudo systemctl stop spamd spamass-milter'
 
 # Reload spamassassin
-alias sarl='sudo systemctl restart spamassassin spamass-milter'
+alias sarl='sudo systemctl restart spamd spamass-milter'
 
 # Check syntax of spamassassin local.cf file.
 alias satestroot='sudo spamassassin --lint'
