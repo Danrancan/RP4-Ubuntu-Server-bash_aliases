@@ -586,22 +586,22 @@ alias sastop='sudo systemctl stop spamd spamass-milter'
 alias sarl='sudo systemctl restart spamd spamass-milter'
 
 # Check status of spamass-milter
-alias sastat='sudo systemctl status spamass-milter'
+alias samstat='sudo systemctl status spamass-milter'
 
 # Enable spamass-milter
-alias saenable='sudo systemctl enable spamass-milter'
+alias samenable='sudo systemctl enable spamass-milter'
 
 # Disable spamass-milter
-alias sadisable='sudo systemctl disable spamass-milter'
+alias samdisable='sudo systemctl disable spamass-milter'
 
 # Start spamass-milter
-alias sastart='sudo systemctl start spamass-milter'
+alias samstart='sudo systemctl start spamass-milter'
 
 # Stop spamass-milter
-alias sastop='sudo systemctl stop spamass-milter'
+alias samstop='sudo systemctl stop spamass-milter'
 
 # Reload spamass-milter
-alias sarl='sudo systemctl restart spamass-milter'
+alias samrl='sudo systemctl restart spamass-milter'
 
 # Check syntax of spamassassin local.cf file.
 alias satestroot='sudo spamassassin --lint'
