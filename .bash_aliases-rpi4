@@ -11,13 +11,13 @@
 # 1) FIRST TIME FIRMWARE UPDATE: Initial firmware update from Linux computer, only use this once (first time).
 # Use this for updating all of your firmware on your Linux Box for the first time.
 # https://askubuntu.com/a/1497749
-alias firmupinit='sudo apt update && sudo apt install fwupd fwupdmgr refresh --force && fwupdmgr get-updates && sudo fwupdmgr update'
+alias fwupd1='sudo apt update && sudo apt install fwupd fwupdmgr refresh --force && fwupdmgr get-updates && sudo fwupdmgr update'
 
 # 2) EVERY SUBSEQUENT TIME FIRMWARE UPDATE THEREAFTER
 # Command to update firmware from Linux computer after running the first firmware update command.
 # Use this for updating all of your firmware on your Linux Box on any ocasioin after the first time.
 # https://askubuntu.com/a/1497749
-alias firmup='sudo apt update && fwupdmgr refresh --force && fwupdmgr get-updates && sudo fwupdmgr update'
+alias fwupd2='sudo apt update && fwupdmgr refresh --force && fwupdmgr get-updates && sudo fwupdmgr update'
 
 ##################################
 ############# GPG/PGP ############
